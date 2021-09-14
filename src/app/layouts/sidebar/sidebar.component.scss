@@ -1,0 +1,25 @@
+.slimscroll-menu {
+    height: 100%;
+}
+
+i{
+    color: #D31D28;
+}
+
+.textui{
+    color: white;
+}
+
+.nav-second-level li a:focus, .nav-second-level li a:hover, .nav-thrid-level li a:focus, .nav-thrid-level li a:hover{
+    color: white;
+}
+
+.menu-arrow{
+    color: white;
+}
+.active-link{
+    i,.textui{
+        color: white !important;
+    }
+    background-color: #D31D28 !important;
+}

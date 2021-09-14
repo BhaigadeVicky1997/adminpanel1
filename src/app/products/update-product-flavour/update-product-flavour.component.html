@@ -1,0 +1,54 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<!-- Begin Page Product Coupan Code -->
+<div id="wrapper">
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <span class="heading">Product Flavour Details</span>
+                            <form class="form-horizontal" id="form" parsley-validate>
+                                <div class="row">
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Product Flavour ID</label>
+                                        <div class="input-group">
+                                            <input style="background-color: #e4e6e6;" type="text" class="form-control" [(ngModel)]="id"
+                                                name="flavour" readonly>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                (click)="readOnlyFun('You Cannot Update Product Flavour ID')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Flavour Name</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" [(ngModel)]="FName"
+                                                name="flaname">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="UpdateProductFlavour()">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Active Variant</label><br>
+                                        <label class="switch">
+                                            <input type="checkbox" (change)="UpdateProductFlavour()"
+                                                [(ngModel)]="ActiveToggle" name="myCheck">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div> 
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

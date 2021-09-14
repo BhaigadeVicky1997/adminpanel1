@@ -1,0 +1,107 @@
+<!-- Begin page -->
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<div id="wrapper">
+  <div class="content-page">
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row mt-3">
+          <div class="col-sm-12">
+            <div class="card-box">
+              <h4 class="header-title mt-0 mb-3">Add Stores</h4>
+              <form [formGroup]="addFrom">
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label class="col-form-label">Shop Name*</label>
+                    <input type="text" class="form-control" formControlName="sname" [(ngModel)]="Sname" name="Shop"
+                      placeholder="Shop Name" required>
+                    <span class="alert" *ngIf="!addFrom.get('sname').valid && addFrom.get('sname').touched">
+                      Please Enter Shop Name.
+                    </span>
+                  </div>
+
+                  <div class="form-group col-md-4">
+                    <label class="col-form-label">Owner Name*</label>
+                    <input type="text" class="form-control" [(ngModel)]="OwnerNO" name="Owner" placeholder="Owner Name"
+                      formControlName="own" required>
+                    <span class="alert" *ngIf="!addFrom.get('own').valid && addFrom.get('own').touched">
+                      Please Enter Owner Name.
+                    </span>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label class="col-form-label">Address*</label>
+                    <input type="text"  formControlName="add" class="form-control" [(ngModel)]="Addrss" name="Address" placeholder="Address"
+                     required>
+                      <span class="alert" *ngIf="!addFrom.get('add').valid && addFrom.get('add').touched">
+                        Please Enter Address.
+                      </span>
+                  </div>
+                </div>
+                <div class="form-row abc">
+                  <div class="form-group col-md-4">
+                    <label class="col-form-label">Email ID*</label>
+                    <input type="text" class="form-control" [(ngModel)]="mailID" name="Email" placeholder="Email ID"
+                      formControlName="id" required>
+                    <span class="alert" *ngIf="!addFrom.get('id').valid && addFrom.get('id').touched">
+                      Please Enter Email ID.
+                    </span>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label class="col-form-label">Phone Number</label>
+                    <input type="email" class="form-control" [(ngModel)]="PNumber" name="Phone"
+                      [ngModelOptions]="{standalone: true}" placeholder="Phone Number" required>
+
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label class="col-form-label">Geo</label>
+                    <input type="text" class="form-control" [(ngModel)]="Geos" name="geo" placeholder="Geo"
+                      [ngModelOptions]="{standalone: true}" required>
+                  </div>
+
+                </div>
+                <div class="form-row abc">
+                  <div class="form-group col-md-4">
+                    <label class="col-form-label">Google Map Links</label>
+                    <input type="text" class="form-control" [(ngModel)]="GMlink" name="link"
+                      [ngModelOptions]="{standalone: true}" placeholder="Google Map Links" required>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label class="col-form-label">Instagram ID</label>
+                    <input type="text" class="form-control" [(ngModel)]="intsaID" name="insta"
+                      [ngModelOptions]="{standalone: true}" placeholder="Instagram ID" required>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label class="col-form-label">City</label>
+                    <input type="text" class="form-control" [(ngModel)]="citys" name="cit" placeholder="City"
+                      [ngModelOptions]="{standalone: true}" required>
+                  </div>
+                </div>
+                <div class="form-row abc">
+                  <div class="form-group col-md-4">
+                    <label class="col-form-label">State</label>
+                    <input type="text" class="form-control" [(ngModel)]="states" name="sttat" placeholder="State"
+                      [ngModelOptions]="{standalone: true}" required>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label class="col-form-label">Active Variant</label><br>
+                    <label class="switch">
+                      <input type="checkbox" [ngModelOptions]="{standalone: true}" [(ngModel)]="ActiveToggle"
+                        name="myCheck">
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                </div>
+                <button type="button" [disabled]="!addFrom.valid"
+                  class="btn btn-secondary waves-effect waves-light btn-block" (click)="postStoreLocator()">Add</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End page -->
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-atom">
+  <p style="color: white"> Adding</p>
+</ngx-spinner>

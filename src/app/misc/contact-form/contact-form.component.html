@@ -1,0 +1,73 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<div id="wrapper">
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="dt-buttons btn-group">
+                                        <!-- <button class="btn btn-secondary buttons-copy buttons-html5" tabindex="0"
+                                            aria-controls="datatable-buttons" routerLink="/coupan-code/add-coupan-code"
+                                            type="button">
+                                            <span>Add Coupan Code</span>
+                                        </button> -->
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 text-right">
+                                    <div id="datatable-buttons_filter" class="dataTables_filter">
+                                        Search:
+                                        <label>
+                                            <input type="search" class="form-control form-control-sm"
+                                                placeholder="search" aria-controls="datatable-buttons"
+                                                [(ngModel)]="filterInput">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div><br>
+                            <div class="responsive-table-plugin">
+                                <div class="table-rep-plugin">
+                                    <div class="table-responsive" data-pattern="priority-columns">
+                                        <table id="tech-companies-1" class="table table-bordered dt-responsive nowrap">
+                                            <thead>
+                                                <tr>
+                                                    <th>Contact Form ID</th>
+                                                    <th>Full Name</th>
+                                                    <th>Email ID</th>
+                                                    <th>Mobile Number</th>
+                                                    <th>Subject</th>
+                                                    <th>Message</th>
+                                                    <th>Created Date</th>
+                                                    <th>Updated Date</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- <tr *ngFor="let i of contact">
+                                                    <td>{{i.id}}</td>
+                                                    <td>{{i.fullName}}</td>
+                                                    <td>{{i.emailID}}</td>
+                                                    <td>{{i.mobileNumber}}</td>
+                                                    <td>{{i.subject}}</td>
+                                                    <td>{{i.message}}</td>
+                                                    <td>{{i.createdAt}}</td>
+                                                    <td>{{i.updatedAt}}</td>
+                                                </tr> -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bs-example" style="text-align: right;">
+                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

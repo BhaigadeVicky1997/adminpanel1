@@ -1,0 +1,86 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<div id="wrapper">
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="dt-buttons btn-group">
+                                        <button class="btn btn-secondary buttons-copy buttons-html5" tabindex="0"
+                                            aria-controls="datatable-buttons" routerLink='/misc/add-banner'
+                                            type="button">
+                                            <span>Add Banner</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 text-right">
+                                    <div id="datatable-buttons_filter" class="dataTables_filter">
+                                        Search:
+                                        <label>
+                                            <input type="search" class="form-control form-control-sm"
+                                                placeholder="search" aria-controls="datatable-buttons"
+                                                [(ngModel)]="filterInput">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div><br>
+                            <div class="responsive-table-plugin">
+                                <div class="table-rep-plugin">
+                                    <div class="table-responsive" data-pattern="priority-columns">
+                                        <table id="example" class="table table-bordered dt-responsive nowrap">
+                                            <thead>
+                                                <tr>
+                                                    <th (click)="filterTableColumn('id','int')">Banner ID</th>
+                                                    <th (click)="filterTableColumn('bannerName','str')">Banner Name</th>
+                                                    <th (click)="filterTableColumn('bannerLocation','str')">Banner
+                                                        Location</th>
+                                                    <th (click)="filterTableColumn('desktop_banner_photo','long')">
+                                                        Desktop Banner Photo</th>
+                                                    <th (click)="filterTableColumn('mobile_banner_photo','long')">Mobile
+                                                        Banner Photo</th>
+                                                    <th (click)="filterTableColumn('link','str')">Link</th>
+                                                    <th>Operation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr
+                                                    *ngFor="let i of BannerFetch |filter:filterInput | paginate: { itemsPerPage: 10, currentPage: p,totalItems: pageno};let index=index;">
+                                                    <td class="links" style="color: #D31D28 !important"
+                                                        (click)="getBannerID(i.id)">
+                                                        {{i.id}}
+                                                    </td>
+                                                    <td>{{i.bannerName}}</td>
+                                                    <td>{{i.bannerLocation}}</td>
+                                                    <td style="width: 8em;"><img class="img-fluid"
+                                                            src="{{apiservice.domainname}}banner/{{i.desktop_banner_photo}}"
+                                                            alt="Card image cap">
+                                                    </td>
+                                                    <td><img class="img-fluid"
+                                                            src="{{apiservice.domainname}}banner/{{i.mobile_banner_photo}}"
+                                                            alt="Card image cap">
+                                                    </td>
+                                                    <td>{{i.link}}</td>
+                                                    <td><button class="btn btn-secondary waves-effect crossred"
+                                                            type="submit" (click)="deleteeban(i.id)"><i
+                                                                class="fas fa-times"></i></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bs-example" style="text-align: right;">
+                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

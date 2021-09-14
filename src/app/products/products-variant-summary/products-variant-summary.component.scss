@@ -1,0 +1,34 @@
+.e-richtexteditor .e-rte-toolbar.e-control[class*='e-toolbar'], .e-richtexteditor .e-rte-toolbar.e-toolbar.e-extended-toolbar.e-control[class*='e-toolbar']{
+    border: 1px solid #9E9FA1;
+  }
+.e-richtexteditor .e-rte-content .e-content,
+.e-richtexteditor .e-source-content .e-content {
+  background: unset;
+  box-sizing: border-box;
+  height: 100%;
+  min-height: 100px;
+  outline: 0 solid transparent;
+  overflow-x: auto;
+  padding: 16px;
+  position: relative;
+  text-align: inherit;
+  z-index: 2;
+  height: 18em;
+  border: 1px solid #9E9FA1;
+}
+// #pDescription2_rte-edit-view{
+//   height: 250px;
+// }
+
+/* Purav Start */
+// input[type=text]:focus {
+//   border: 1px solid #6c757d;;
+// }
+// select[class=form-control]:focus {
+//   border: 1px solid #6c757d;;
+// }
+
+/* Purav End */
+
+
+  

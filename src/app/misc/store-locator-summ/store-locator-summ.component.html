@@ -1,0 +1,161 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<!-- Begin Page Product Variant -->
+<div id="wrapper">
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <span class="heading">Store Locator Details</span>
+                            <form class="form-horizontal" id="form" parsley-validate>
+                                <div class="row">
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Store Locator ID</label>
+                                        <div class="input-group">
+                                            <input style="background-color: #e4e6e6;" type="text" class="form-control"
+                                                [(ngModel)]="storeID" name="storeLocator" readonly>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="readOnlyFun('You Cannot Update Store Locator ID')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Shop Name</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" [(ngModel)]="Sname" name="Shop">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="StoreUpdate('nameSSS')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Owner Name</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" [(ngModel)]="OwnerN" name="owner">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="StoreUpdate('owner')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Email ID</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" [(ngModel)]="IDEmail" name="Email">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="StoreUpdate('Emid')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Phone Number</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" [(ngModel)]="PNumber" name="phone">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="StoreUpdate('phone')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Geo</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" [(ngModel)]="geo" name="Geo">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="StoreUpdate('geo')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Instagram ID</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" [(ngModel)]="IdInstagram"
+                                                name="insta">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="StoreUpdate('insta')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">City</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" [(ngModel)]="cits" name="city">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="StoreUpdate('city')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">State</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" [(ngModel)]="statess" name="state">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="StoreUpdate('state')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="col-form-label">Address</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" [(ngModel)]="Addrs" name="address">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="StoreUpdate('addresss')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="col-form-label">Google Map Links</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" [(ngModel)]="GMapLink"
+                                                name="Google">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="StoreUpdate('links')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Active Variant</label><br>
+                                        <label class="switch">
+                                            <input type="checkbox" (change)="StoreUpdate('active')" [(ngModel)]="activesToggle"
+                                                name="myCheck">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

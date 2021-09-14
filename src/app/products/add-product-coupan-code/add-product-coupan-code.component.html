@@ -1,0 +1,43 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<!-- Begin page -->
+<div id="wrapper">
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-sm-12">
+                        <div class="card-box">
+                            <h4 class="header-title mt-0 mb-3">Add Coupan Code</h4>
+                            <form class="form-horizontal" id="form" parsley-validate>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label">Coupan Code</label>
+                                        <input type="text" class="form-control" [(ngModel)]="Code" name="coupancode1"
+                                            placeholder="Coupan Code">
+                                        <p class="help-block">Please Enter Coupan Code.</p>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label">Coupan Code Message</label>
+                                        <input type="text" class="form-control" [(ngModel)]="ccMessgae" name="message2"
+                                            placeholder="Coupan Code Message">
+                                        <p class="help-block">Please Enter Coupan Code Message.</p>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label">Discount</label>
+                                        <input type="text" class="form-control" [(ngModel)]="discount" name="discount3"
+                                            placeholder="Discount">
+                                        <p class="help-block">Please Enter Discount.</p>
+                                    </div>
+                                </div>
+                                <button type="submit"
+                                    class="btn btn-secondary waves-effect waves-light btn-block" (click)="AddCoupan()">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Page -->

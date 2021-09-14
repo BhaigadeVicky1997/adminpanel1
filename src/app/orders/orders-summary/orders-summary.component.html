@@ -1,0 +1,564 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<!-- Begin Page Product Variant -->
+<!-- Particular order start -->
+<div id="wrapper">
+  <div class="content-page">
+    <div class="content" *ngIf="orders">
+      <div class="container-fluid">
+        <div class="row mt-3">
+          <div class="col-12">
+            <div style="float: right;margin-bottom: 10px;">
+              <button class="btn btn-icon waves-effect btn-secondary" type="submit" (click)="prevItem(orders.id)"
+                [disabled]="orders==undefined" style="margin-right: 10px;">Previous Order</button>
+              <button class="btn btn-icon waves-effect btn-secondary" type="submit" (click)="nextItem(orders.id)"
+                [disabled]="orders==undefined">Next Order</button>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="card-box">
+              <span class="heading">Order Details</span>
+              <form class="form-horizontal" id="form" parsley-validate>
+                <div class="row">
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Order ID</label>
+                    <div class="input-group">
+                      <input style="background-color: #e4e6e6;" type="text" class="form-control" [(ngModel)]="orders.id"
+                        name="Idorder" readonly>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update Order ID')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Order Date</label>
+                    <div class="input-group">
+                      <input type="text" style="background-color: #e4e6e6;" class="form-control"
+                        value="{{orders.createdAt | date}}" name="date" readonly>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update Order Date')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Total Value</label>
+                    <div class="input-group">
+                      <input type="text" style="background-color: #e4e6e6;" class="form-control"
+                        [(ngModel)]="orders.totalAmount" name="amt" readonly>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update Total Value')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="col-6 col-lg-4">
+                    <label for="inputState" class="col-form-label">Order Status</label>
+                    <div class="input-group">
+                      <select id="orderStat" class="form-control" [(ngModel)]="orders.orderStatus" name="oStatus">
+                        <option value="PAYMENT PENDING">PAYMENT PENDING</option>
+                        <option value="ORDER PENDING">ORDER PENDING</option>
+                        <option value="SHIPPED">SHIPPED</option>
+                        <option value="COMPLETED">COMPLETED</option>
+                      </select>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit" (click)="OrderUpdate()">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div> -->
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">RazorpayId / COD</label>
+                    <div class="input-group">
+                      <input type="text" style="background-color: #e4e6e6;" class="form-control"
+                        [(ngModel)]="orders.razorpayID" name="rId" readonly>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update RazorpayId / COD')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Coupon Code</label>
+                    <div class="input-group">
+                      <input type="text" style="background-color: #e4e6e6;" class="form-control"
+                        [(ngModel)]="coupanCode" name="coupanCode" readonly>
+                      <!-- <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update Razor Pay ID')">
+                          <i class="fas fa-check"></i> </button>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Particular order end -->
+
+    <!-- Customer information start hide n show -->
+    <div class="content" *ngIf="clientShow">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card-box">
+              <span class="heading">Customer Information</span>
+              <form class="form-horizontal" id="form" parsley-validate>
+                <div class="row" *ngIf="clientAddress">
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Customer ID</label>
+                    <div class="input-group">
+                      <input style="background-color: #e4e6e6;" type="text" class="form-control"
+                        [(ngModel)]="clientAddress.clientId" name="Idorder" readonly>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update Customer ID')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Customer Name</label>
+                    <div class="input-group">
+                      <input type="text" style="background-color: #e4e6e6;" class="form-control" [(ngModel)]="Cname"
+                        name="CustomerName" readonly>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update Customer Name')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Email ID</label>
+                    <div class="input-group">
+                      <input type="text" style="background-color: #e4e6e6;" class="form-control"
+                        [(ngModel)]="emailClient" name="emailclient" readonly>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update Email ID')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Mobile Number</label>
+                    <div class="input-group">
+                      <input type="number" style="background-color: #e4e6e6;" class="form-control"
+                        [(ngModel)]="clientAddress.deleivery_mobile_number" name="CumrName" readonly>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update Mobile Number')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Address</label>
+                    <div class="input-group">
+                      <input type="text" style="background-color: #e4e6e6;" class="form-control"
+                        [(ngModel)]="clientAddress.address" name="houseclient" readonly>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update Mobile Number')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Street Address</label>
+                    <div class="input-group">
+                      <input type="text" style="background-color: #e4e6e6;" class="form-control"
+                        [(ngModel)]="clientAddress.street_address" name="streetclint" readonly>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update Mobile Number')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div> -->
+                  <!-- <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Area</label>
+                    <div class="input-group">
+                      <input type="text" style="background-color: #e4e6e6;" class="form-control"
+                        [(ngModel)]="clientAddress.area" name="areaClientt" readonly>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update Mobile Number')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div> -->
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">City</label>
+                    <div class="input-group">
+                      <input type="text" style="background-color: #e4e6e6;" class="form-control"
+                        [(ngModel)]="clientAddress.city" name="clientCity" readonly>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update Mobile Number')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">State</label>
+                    <div class="input-group">
+                      <input type="text" style="background-color: #e4e6e6;" class="form-control"
+                        [(ngModel)]="clientAddress.state" name="sclient" readonly>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update Mobile Number')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Country</label>
+                    <div class="input-group">
+                      <input type="text" style="background-color: #e4e6e6;" class="form-control"
+                        [(ngModel)]="clientAddress.country" name="countryclient" readonly>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update Mobile Number')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Postal Code</label>
+                    <div class="input-group">
+                      <input type="number" style="background-color: #e4e6e6;" class="form-control"
+                        [(ngModel)]="clientAddress.post_code" name="postalClient" readonly>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update Mobile Number')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+
+                </div> <br>
+                <div class="row">
+                  <!-- Start  -->
+                  <div class="form-group col-md-12">
+                    <label class="col-form-label">Combined Address for Customer
+                      
+                      <!-- Commented out Add New Modal for Customer Addresses -->
+                      <!-- <a data-toggle="modal" href="#addNewClient"> Add New</a> -->
+                      <!-- Modal -->
+                      <!-- <div id="addNewClient" class="modal fade" role="dialog">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title">Add Street Address</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="row">
+                                <div class="form-group col-md-4">
+                                  <label class="col-form-label">House Number</label>
+                                  <input type="text" class="form-control" [(ngModel)]="houseNO" name="house" required>
+                                  <p class="help-block">Please Enter House Number.</p>
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label class="col-form-label">Street Address</label>
+                                  <input type="text" class="form-control" [(ngModel)]="sAddrrs" name="streetaddress"
+                                    required>
+                                  <p class="help-block">Please Enter Street Address.</p>
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label class="col-form-label">Area</label>
+                                  <input type="email" class="form-control" [(ngModel)]="AREa" name="area" required>
+                                  <p class="help-block">Please Enter Area.</p>
+                                </div>
+                                <div class="form-group col-md-4 abc">
+                                  <label class="col-form-label">City</label>
+                                  <input type="text" class="form-control" [(ngModel)]="CiTy" name="city" required>
+                                  <p class="help-block">Please Enter City.</p>
+                                </div>
+                                <div class="form-group col-md-4 abc">
+                                  <label class="col-form-label">State</label>
+                                  <input type="text" class="form-control" [(ngModel)]="sTate" name="state" required>
+                                  <p class="help-block">Please Enter State.</p>
+                                </div>
+
+                                <div class="form-group col-md-4 abc">
+                                  <label class="col-form-label">Country</label>
+                                  <input type="text" class="form-control" [(ngModel)]="countriessDDD" name="countryss"
+                                    required>
+                                  <p class="help-block">Please Enter Country</p>
+                                </div>
+                                <div class="form-group col-md-4 abc">
+                                  <label class="col-form-label">Post Code</label>
+                                  <input type="text" class="form-control" [(ngModel)]="codePostDDD" name="pCode"
+                                    required>
+                                  <p class="help-block">Please Enter Post Code.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer abc">
+                              <button type="button" class="btn btn-secondary waves-effect waves-light btn-block"
+                                data-dismiss="modal" (click)="AddaddressStreet()">Add</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div> -->
+                    </label>
+
+                    <!-- <select class="form-control" *ngIf="HAddress">
+                      <option
+                        value="{{HAddress.house_number}},{{HAddress.street_address}},{{HAddress.area}},{{HAddress.city}},{{HAddress.country}},{{HAddress.post_code}}">
+                        {{HAddress.house_number}},{{HAddress.street_address}},{{HAddress.area}},{{HAddress.city}},{{HAddress.state}},{{HAddress.country}},{{HAddress.post_code}}
+                      </option>
+                    </select> -->
+                    <input type="text" class="form-control" *ngIf="clientAddress"
+                        [(ngModel)]="orders.id + ', ' + Cname + ', ' + clientAddress.deleivery_mobile_number + ', ' + emailClient + ', ' + clientAddress.address + ', ' + clientAddress.city + ', ' + clientAddress.state + ' - ' + clientAddress.post_code"
+                        name="customerAddressConcat" readonly>
+
+                    <!-- Commented out the Multiple Address Selector     -->
+                    <!-- <select class="form-control" required>
+                      <option *ngFor="let i of HAddress">
+                        {{clientAddress.deleivery_mobile_number}}{{i.house_number}},{{i.street_address}},{{i.area}},{{i.city}},{{i.country}},{{i.post_code}}
+                      </option>
+                    </select> -->
+                  </div>
+                  <!-- End of modal -->
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Customer information end hide n show -->
+
+    <!-- Guest information start hide n show -->
+    <div class="content" *ngIf="guestShow">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card-box">
+              <div class="row">
+                <div class="col-10">
+                  <span class="heading">Guest Information</span>
+                </div>
+                <div class="col-2 p--0 d-flex justify-content-end">
+                  <div class="dt-buttons btn-group">
+                    <button class="btn btn-secondary buttons-copy buttons-html5 buttontable mr-2" tabindex="0"
+                      aria-controls="datatable-buttons" type="button" (click)="exportAsXLSX()">
+                      <span>Excel</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <form class="form-horizontal" id="form" parsley-validate>
+                <div class="row">
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Guest ID</label>
+                    <div class="input-group">
+                      <input style="background-color: #e4e6e6;" type="text" class="form-control" [(ngModel)]="guestIds"
+                        name="ids" readonly>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update Guest ID')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Name</label>
+                    <div class="input-group">
+                      <input type="text" style="background-color: #e4e6e6;" class="form-control" [(ngModel)]="fullNAme"
+                        name="fname" readonly>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update Name')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Device Identifier</label>
+                    <div class="input-group">
+                      <input type="text" style="background-color: #e4e6e6;" class="form-control"
+                        [(ngModel)]="deviceIndentity" name="identifiers" readonly>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update Device Identifier')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Email ID</label>
+                    <div class="input-group">
+                      <input type="text" style="background-color: #e4e6e6;" class="form-control" [(ngModel)]="emailD"
+                        name="mail" readonly>
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="readOnlyFun('You Cannot Update Email ID')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Mobile Number</label>
+                    <div class="input-group">
+                      <input type="number" class="form-control" [(ngModel)]="mobNumber" name="mnum">
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="OrderparticularGuest('mobile')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Address</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" [(ngModel)]="houseNO" name="hNo">
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="OrderparticularGuest('house')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Commented out Street Address & Area -->
+                  <!-- <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Street Address</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" [(ngModel)]="sAddrrs" name="streetadd">
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="OrderparticularGuest('streetadd')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Area</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" [(ngModel)]="AREa" name="ares">
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="OrderparticularGuest('area')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div> -->
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">City</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" [(ngModel)]="CiTy" name="city">
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="OrderparticularGuest('city')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">State</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" [(ngModel)]="sTate" name="staaAte">
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="OrderparticularGuest('state')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Country</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" [(ngModel)]="countriess" name="cOuntry">
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="OrderparticularGuest('country')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-4">
+                    <label class="col-form-label">Post Code</label>
+                    <div class="input-group">
+                      <input type="number" class="form-control" [(ngModel)]="codePost" name="pCodes">
+                      <div class="input-group-append">
+                        <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                          (click)="OrderparticularGuest('post')">
+                          <i class="fas fa-check"></i> </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" *ngIf="houseNO">
+                  <div class="col-md-12">
+                    <label class="col-form-label">Combined Address for Guest</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control"
+                        [(ngModel)]="orders.id + ', ' + fullNAme + ', ' + mobNumber + ', ' + emailD + ', ' + houseNO + ', ' + CiTy + ', ' + sTate + ' - ' + codePost"
+                        name="addres">
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Guest information end hide n show -->
+
+    <!-- Order product start -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card-box">
+              <span class="heading">Order Product</span>
+              <div class="responsive-table-plugin">
+                <div class="table-rep-plugin">
+                  <div class="table-responsive" data-pattern="priority-columns">
+                    <table id="tech-companies-1" class="table table-bordered dt-responsive nowrap">
+                      <thead>
+                        <tr style="cursor: pointer;">
+                          <th (click)="filterTableColumn('productVariantId','str')">Product SKU</th>
+                          <th (click)="filterTableColumn('productVariantId','str')">Product Name</th>
+                          <th (click)="filterTableColumn('quantity','int')">Quantity</th>
+                          <th (click)="filterTableColumn('productFlavour','str')">Product Flavour</th>
+                          <th (click)="filterTableColumn('order_product_price','int')">Product Price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let i of partucularOrder">
+                          <td *ngIf="i.productVariant!=null">{{i.productVariant.productSKU}}</td>
+                          <td *ngIf="i.productVariant!=null">{{i.productVariant.variantName}}</td>
+                          <td>{{i.quantity}}</td>
+                          <td>{{i.productFlavour}}</td>
+                          <td>{{i.order_product_price}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Order product end -->
+  </div>
+</div>

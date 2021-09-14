@@ -1,0 +1,97 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<div id="wrapper">
+  <div class="content-page">
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row mt-3">
+          <div class="col-12">
+            <div class="card-box">
+              <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <div class="dt-buttons btn-group">
+                    <button class="btn btn-secondary buttons-copy buttons-html5" style="border-radius: 3px;"
+                      tabindex="0" aria-controls="datatable-buttons" (click)="exportAsXLSXs()" type="button">
+                      <span>Customer Excel</span>
+                    </button>
+                    <button class="btn btn-secondary buttons-copy buttons-html5 ml-1" style="border-radius: 3px;"
+                      tabindex="0" aria-controls="datatable-buttons" (click)="exportAsXLSX()" type="button">
+                      <span>Guest Excel</span>
+                    </button>
+                    <button class="btn btn-secondary buttons-copy buttons-html5 ml-1" style="border-radius: 3px;"
+                      tabindex="0" aria-controls="datatable-buttons" type="button" (click)="sendtracklink()">
+                      <span>Send Tracking Link</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 text-right">
+                  <div id="datatable-buttons_filter" class="dataTables_filter">
+                    Search:
+                    <label>
+                      <input type="search" class="form-control form-control-sm" placeholder="search"
+                        aria-controls="datatable-buttons" [(ngModel)]="filterInput">
+                    </label>
+                  </div>
+                </div>
+              </div><br>
+              <div class="responsive-table-plugin">
+                <div class="table-rep-plugin">
+                  <div class="table-responsive" data-pattern="priority-columns">
+                    <table id="example" class="table table-bordered dt-responsive nowrap">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th style="cursor: pointer;" (click)="filterTableColumn('id','int')">Order ID </th>
+                          <th style="cursor: pointer;" (click)="filterTableColumn('createdAt','str')">Order Date</th>
+                          <th style="cursor: pointer;" (click)="filterTableColumn('totalAmount','str')">Total Value
+                          </th>
+                          <!-- <th style="cursor: pointer;" (click)="filterTableColumn('orderStatus','str')">Order
+                            Status</th> -->
+                          <th style="cursor: pointer;" (click)="filterTableColumn('razorpayID','int')">Razorpay Id / COD
+                          </th>
+                          <th style="text-align: center;">Awb</th>
+                          <th>Customer Name</th>
+                          <th>Email Id</th>
+                          <th>Phone Number</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr
+                          *ngFor="let i of fetchOrders | filter:filterInput | paginate: { itemsPerPage: 50, currentPage: p,totalItems: pageno};let index=index;">
+                          <td><input type="checkbox" class="checkBoxClass"  (change)="checkValue($event,i.id)" /></td>
+                          <td class="links" style="color: #D31D28 !important"
+                            (click)="getPrticularOrderID(i.id,i.guestId,i.clientId)">
+                            {{i.id}} 
+                          </td>
+                          <td>{{i.createdAt | date}}</td>
+                          <td>{{math.round(i.totalAmount)}}</td>
+                          <!-- <td>{{i.orderStatus}}</td> -->
+                          <td>{{i.razorpayID}}</td>
+                          <td><a href="https://sourceofsupplements.ithinklogistics.co.in/postship/tracking/{{i.awb_number}}"  target="_blank"> {{i.awb_number}} </a></td>
+                          <td *ngIf="i.guest">{{i.guest.fullName}}</td>
+                          <td *ngIf="i.client">{{i.client.name}}</td>
+                          <td *ngIf="i.guest">{{i.guest.emailID}}</td>
+                          <td *ngIf="i.client">{{i.client.email}}</td>
+                          <td *ngIf="i.guest">{{i.guest?i.guest.phoneNumber:'-'}}</td>
+                          <td *ngIf="i.client">{{(i.client_address)? i.client_address.deleivery_mobile_number:'-'}}</td>
+                          
+                          <!-- <td *ngIf="i.client">{{i.client.phoneNumber}}</td> -->
+                          
+                          
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="bs-example" style="text-align: right;">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

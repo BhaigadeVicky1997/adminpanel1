@@ -1,0 +1,79 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<!-- Begin page -->
+<div id="wrapper">
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-sm-12">
+                        <div class="card-box">
+                            <h4 class="header-title mt-0 mb-3">Add Categories</h4>
+                            <form [formGroup]="addFrom">
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label">Category Name*</label>
+                                        <input type="text" class="form-control" formControlName="CategoryNames"
+                                            [(ngModel)]="CatName" name="CategoryName" placeholder="Category Name"
+                                            required>
+                                        <span class="alert"
+                                            *ngIf="!addFrom.get('CategoryNames').valid && addFrom.get('CategoryNames').touched">
+                                            Please Enter Category Name.
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label">Category Image*</label>
+                                        <input type="file" class="form-control" name="images"
+                                            (change)="selectMultipleImage($event)" required>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label class="col-form-label">Active Variant</label><br>
+                                        <label class="switch">
+                                            <input type="checkbox" [(ngModel)]="ActiveVariantToggle"
+                                                [ngModelOptions]="{standalone: true}" name="ActiveVariantSwitch">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+
+
+                                </div>
+                                <div class="row" style="margin-top: -18px;">
+                                    <div class="form-group col-md-4 mt-1">
+                                        <label class="col-form-label">Order*</label>
+                                        <select class="form-control" name="Trendingbrand3" required>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                        </select>
+                                        <!-- <span class="alert"
+                                                                             *ngIf="!addFrom.get('trendingBrand').valid && addFrom.get('trendingBrand').touched">
+                                                                             Please Enter Order.
+                                                                           </span> -->
+                                    </div>
+                                </div>
+                                <button class="btn btn-secondary waves-effect waves-light btn-block"
+                                    [disabled]="!addFrom.valid" type="submit" (click)="InsertCategory()">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End page -->
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-atom">
+    <p style="color: white"> Adding</p>
+</ngx-spinner>

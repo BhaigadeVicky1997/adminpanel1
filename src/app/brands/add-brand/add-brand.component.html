@@ -1,0 +1,94 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<!-- Begin page -->
+<div id="wrapper">
+  <div class="content-page">
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row mt-3">
+          <div class="col-sm-12">
+            <div class="card-box">
+              <h4 class="header-title mt-0 mb-3">Add Brand</h4>
+              <form [formGroup]="addFrom">
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label class="col-form-label">Brand Name*</label>
+                    <input type="text" class="form-control" formControlName="brandName" [(ngModel)]="bName1"
+                      name="ProductBerandNames" placeholder="Brand Name" required>
+                    <span class="alert" *ngIf="!addFrom.get('brandName').valid && addFrom.get('brandName').touched">
+                      Please Enter Brand Name.
+                    </span>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label class="col-form-label">Popular Brand*</label>
+                    <select class="form-control" formControlName="popularBrand" [(ngModel)]="popular2"
+                      name="PopularBrandname" required>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                    </select>
+                    <span class="alert"
+                      *ngIf="!addFrom.get('popularBrand').valid && addFrom.get('popularBrand').touched">
+                      Please Enter Popular Brand.
+                    </span>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label class="col-form-label">Order*</label>
+                    <select class="form-control" formControlName="trendingBrand" [(ngModel)]="trendingbrand3"
+                      name="Trendingbrand3" required>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                    </select>
+                    <span class="alert"
+                      *ngIf="!addFrom.get('trendingBrand').valid && addFrom.get('trendingBrand').touched">
+                      Please Enter Order.
+                    </span>
+                  </div>
+                </div>
+                <div class="form-row abc">
+                  <div class="form-group col-md-4">
+                    <label class="col-form-label">Brand Image*</label>
+                    <input type="file" class="form-control" multiple (change)="selectMultipleImage($event)">
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label class="col-form-label">Active Variant</label><br>
+                    <label class="switch">
+                      <input type="checkbox" [(ngModel)]="ActiveVariantToggle" [ngModelOptions]="{standalone: true}"
+                        name="ActiveVariantSwitch">
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                </div>
+                <button class="btn btn-secondary waves-effect waves-light btn-block" [disabled]="!addFrom.valid"
+                  (click)="productbrandAdd()" type="submit">Add</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End page -->
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-atom">
+  <p style="color: white"> Adding</p>
+</ngx-spinner>

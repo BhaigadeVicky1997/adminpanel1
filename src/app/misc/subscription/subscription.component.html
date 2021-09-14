@@ -1,0 +1,79 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<div id="wrapper">
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="dt-buttons btn-group">
+                                        <button class="btn btn-secondary buttons-copy buttons-html5 buttontable mr-2"
+                                            tabindex="0" aria-controls="datatable-buttons" type="button"
+                                            (click)="exportAsXLSX()">
+                                            <span>Excel</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 text-right">
+                                    <div id="datatable-buttons_filter" class="dataTables_filter">
+                                        Search:
+                                        <label>
+                                            <input type="search" class="form-control form-control-sm"
+                                                placeholder="search" aria-controls="datatable-buttons"
+                                                [(ngModel)]="filterInput">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div><br>
+                            <div class="responsive-table-plugin">
+                                <div class="table-rep-plugin">
+                                    <div class="table-responsive" data-pattern="priority-columns">
+                                        <table id="example" class="table table-bordered dt-responsive nowrap">
+                                            <thead>
+                                                <tr>
+                                                    <th style="cursor: pointer;"
+                                                        (click)="filterTableColumn('id','int')">Subscription ID</th>
+                                                    <!-- <th style="cursor: pointer;"
+                                                        (click)="filterTableColumn('fullName','str')">Full Name
+                                                    </th> -->
+                                                    <th style="cursor: pointer;"
+                                                        (click)="filterTableColumn('mobile_number','int')">Mobile Number
+                                                    </th>
+                                                    <th style="cursor: pointer;"
+                                                        (click)="filterTableColumn('activeSubscription','str')">Active
+                                                        Subscription</th>
+                                                    <!-- <th>Active</th> -->
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr
+                                                    *ngFor="let i of SubscriptionFetch |filter:filterInput | paginate: { itemsPerPage: 10, currentPage: p,totalItems: pageno};let index=index;">
+                                                    <td>{{i.id}}
+                                                    </td>
+                                                    <!-- <td>{{i.fullName}}</td> -->
+                                                    <td>{{i.mobile_number}}</td>
+                                                    <td><label class="switch">
+                                                            <input type="checkbox" name="activeSubscription{{index}}"
+                                                                [(ngModel)]="i.activeSubscription">
+                                                            <span class="slider round"></span>
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bs-example" style="text-align: right;">
+                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

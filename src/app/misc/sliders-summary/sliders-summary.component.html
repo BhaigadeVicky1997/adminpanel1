@@ -1,0 +1,119 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<!-- Begin Page Product Brand -->
+<div id="wrapper">
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <span class="heading">Slider Details</span>
+                            <form class="form-horizontal" id="form" parsley-validate><br>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 col-xl-2 justify-content-center">
+                                        <div class="card">
+                                            <img class="img-fluid" [src]="SliderimagePath" alt="Card image cap">
+                                            <div class="card-body text-center">
+                                                <span style="border: 2px solid black; padding: 10px;border-radius: 9px;color: #D31D28; font-weight: 700;">Slider Path</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-8 col-xl-4 justify-content-center">
+                                        <div class="card">
+                                            <img class="img-fluid" [src]="desktopSliderimagePath" alt="Card image cap">
+                                            <div class="card-body text-center">
+                                                <span style="border: 2px solid black; padding: 10px;border-radius: 9px;color: #D31D28; font-weight: 700;">Slider Desktop Brand</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xl-6">
+                                        <div class="row" style="position: relative;top: -1em;">
+                                            <div class="col-md-6 col-lg-6">
+                                                <label class="col-form-label">Slider Name</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" [(ngModel)]="SliderNames"
+                                                        name="sName">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-icon waves-effect btn-secondary"
+                                                            type="submit" (click)="SliderUpadate('Snname')">
+                                                            <i class="fas fa-check"></i> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <label class="col-form-label">Slider Path</label>
+                                                <div class="input-group">
+                                                    <input type="file"
+                                                        accept="image/gif, image/jpeg, image/png, image/jpeg"
+                                                        class="form-control" name="images"
+                                                        (change)="sliderimagePath($event)" multiple>
+
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-icon waves-effect btn-secondary"
+                                                            type="submit" (click)="UpdateSliderImage()">
+                                                            <i class="fas fa-check"></i> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <label class="col-form-label">Slider Desktop Brand</label>
+                                                <div class="input-group">
+                                                    <input type="file"
+                                                        accept="image/gif, image/jpeg, image/png, image/jpeg"
+                                                        class="form-control" name="images"
+                                                        (change)="selectsliderdesktop($event)" multiple>
+
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-icon waves-effect btn-secondary"
+                                                            type="submit" (click)="UpdateSliderImage()">
+                                                            <i class="fas fa-check"></i> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <label class="col-form-label">Slider Position</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" [(ngModel)]="sliderPosition"
+                                                        name="position">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-icon waves-effect btn-secondary"
+                                                            type="submit" (click)="SliderUpadate('spos')">
+                                                            <i class="fas fa-check"></i> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-lg-12">
+                                                <label class="col-form-label">Link</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" [(ngModel)]="links"
+                                                        name="sliderLink">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-icon waves-effect btn-secondary"
+                                                            type="submit" (click)="SliderUpadate('linksss')">
+                                                            <i class="fas fa-check"></i> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <label class="col-form-label">Active Variant</label><br>
+                                                <label class="switch">
+                                                    <input type="checkbox" (change)="SliderUpadate('active')"
+                                                        [(ngModel)]="ActiveToggle" name="myCheck">
+                                                    <span class="slider round"></span>
+                                                </label>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Update Brand End -->
+    </div>
+</div>

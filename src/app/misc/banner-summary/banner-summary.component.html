@@ -1,0 +1,110 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<!-- Begin  -->
+<div id="wrapper">
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <span class="heading">Banner Details</span>
+                            <form class="form-horizontal" id="form" parsley-validate><br>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-5 col-xl-3 justify-content-center">
+                                        <div class="card">
+                                            <img class="img-fluid" [src]="MobileimagePath" alt="Card image cap">
+                                            <div class="card-body text-center">
+                                                <span style="border: 2px solid black; padding: 10px;border-radius: 9px;color: #D31D28; font-weight: 700;">Mobile Image</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-7 col-xl-3 justify-content-center">
+                                        <div class="card">
+                                            <img class="img-fluid" [src]="desktopimagePath" alt="Card image cap">
+                                            <div class="card-body text-center">
+                                                <span style="border: 2px solid black; padding: 10px;border-radius: 9px;color: #D31D28; font-weight: 700;">Desktop Image</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xl-6">
+                                        <div class="row" style="position: relative;top: -1em;">
+                                            <div class="col-6 col-lg-6">
+                                                <label class="col-form-label">Banner Name</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" [(ngModel)]="bannerName1"
+                                                        name="Namebanner">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-icon waves-effect btn-secondary"
+                                                            type="submit" (click)="bannerUpadate('banname')">
+                                                            <i class="fas fa-check"></i> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6 col-lg-6">
+                                                <label class="col-form-label">Banner Location</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control"
+                                                        [(ngModel)]="bannerLocations" name="NameLocatioon">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-icon waves-effect btn-secondary"
+                                                            type="submit" (click)="bannerUpadate('lockss')">
+                                                            <i class="fas fa-check"></i> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <label class="col-form-label">Desktop Banner Photo</label>
+                                                <div class="input-group">
+                                                    <input type="file"
+                                                        accept="image/gif, image/jpeg, image/png, image/jpeg"
+                                                        class="form-control" name="images"
+                                                        (change)="selectDesktopImage($event)" multiple>
+
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-icon waves-effect btn-secondary"
+                                                            type="submit" (click)="UpdateBannerImage()">
+                                                            <i class="fas fa-check"></i> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <label class="col-form-label">Mobile Banner Photo</label>
+                                                <div class="input-group">
+                                                    <input type="file"
+                                                        accept="image/gif, image/jpeg, image/png, image/jpeg"
+                                                        class="form-control" name="images"
+                                                        (change)="selectMobileImage($event)" multiple>
+
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-icon waves-effect btn-secondary"
+                                                            type="submit" (click)="UpdateBannerImage()">
+                                                            <i class="fas fa-check"></i> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-lg-12">
+                                                <label class="col-form-label">Link</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" [(ngModel)]="links"
+                                                        name="bannerlink">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-icon waves-effect btn-secondary"
+                                                            type="submit" (click)="bannerUpadate('linksss')">
+                                                            <i class="fas fa-check"></i> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Brand End -->
+    </div>
+</div>

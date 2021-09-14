@@ -1,0 +1,171 @@
+<!-- ========== Left Sidebar Start ========== -->
+<ng-template #contentTemplate>
+    <!--- Sidemenu -->
+    <div id="sidebar-menu">
+        <ul class="metismenu" id="side-menu" #sideMenu>
+            <!-- <li class="menu-title">Source Of Supplements</li> -->
+
+            <li routerLink='/dashboard/view-dashboard' routerLinkActive="active-link">
+                <a href="javascript: void(0);" class="waves-effect" aria-expanded="false">
+                    <i class="mdi mdi-view-dashboard"></i>
+                    <span style="outline: none;" class="textui">Dashboard</span>
+                </a>
+            </li>
+            <li routerLink='/products/view-products' routerLinkActive="active-link">
+                <a href="javascript: void(0);" class="waves-effect" aria-expanded="false">
+                    <i class="mdi mdi-package-variant"></i>
+                    <span style="outline: none;" class="textui">Products</span>
+                </a>
+            </li>
+            <li routerLink='/brands/view-brand' routerLinkActive="active-link">
+                <a href="javascript: void(0);" class="waves-effect" aria-expanded="false">
+                    <i class="mdi mdi-tag-multiple"></i>
+                    <span style="outline: none;" class="textui">Brands</span>
+                </a>
+            </li>
+            <li routerLink='/categories/view-categories' routerLinkActive="active-link">
+                <a href="javascript: void(0);" class="waves-effect" aria-expanded="false">
+                    <i class="mdi mdi-view-sequential"></i>
+                    <span style="outline: none;" class="textui">Categories</span>
+                </a>
+            </li>
+            <li routerLink='/sub-categories/view-sub-categories' routerLinkActive="active-link">
+                <a href="javascript: void(0);" class="waves-effect" aria-expanded="false">
+                    <i class="mdi mdi-view-list"></i>
+                    <span style="outline: none;" class="textui">Sub-Categories</span>
+                </a>
+            </li>
+            <li routerLink='/orders/view-orders' routerLinkActive="active-link">
+                <a href="javascript: void(0);" class="waves-effect" aria-expanded="false">
+                    <i class="mdi mdi-cart"></i>
+                    <span style="outline: none;" class="textui">Orders</span>
+                </a>
+            </li>
+
+            <li routerLink='/coupan-code/view-coupan-code' routerLinkActive="active-link">
+                <a href="javascript: void(0);" class="waves-effect" aria-expanded="false">
+                    <i class="mdi mdi-ticket-percent"></i>
+                    <span style="outline: none;" class="textui">Coupon Code</span>
+                </a>
+            </li>
+            <li routerLink='/customers/view-customers' routerLinkActive="active-link">
+                <a href="javascript: void(0);" class="waves-effect" aria-expanded="false">
+                    <i class="mdi mdi-account"></i>
+                    <span style="outline: none;" class="textui">Customers</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="javascript: void(0);" class="waves-effect" aria-expanded="false">
+                    <i class="mdi mdi-layers"></i>
+                    <span style="outline: none;" class="textui">Misc</span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <ul class="nav-second-level nav collapse" aria-expanded="false">
+
+                    <li routerLink='/misc/view-store-locator' routerLinkActive="active-link">
+                        <a href="javascript: void(0);" class="waves-effect" aria-expanded="false">
+                            <!-- <i class="mdi mdi-account"></i> -->
+                            <span style="outline: none;" class="textui">Store Locator</span>
+                        </a>
+                    </li>
+                    <li routerLink='/misc/view-franchise-form' routerLinkActive="active-link">
+                        <a href="javascript: void(0);" class="waves-effect" aria-expanded="false">
+                            <!-- <i class="mdi mdi-account"></i> -->
+                            <span style="outline: none;" class="textui">Partner with SOS</span>
+                        </a>
+                    </li>
+                    <li routerLink='/misc/view-banner' routerLinkActive="active-link">
+                        <a href="javascript: void(0);" class="waves-effect" aria-expanded="false">
+                            <!-- <i class="mdi mdi-account"></i> -->
+                            <span style="outline: none;" class="textui">Banner</span>
+                        </a>
+                    </li>
+                    <li routerLink='/misc/view-subscription-form' routerLinkActive="active-link">
+                        <a href="javascript: void(0);" class="waves-effect" aria-expanded="false">
+                            <!-- <i class="mdi mdi-account"></i> -->
+                            <span style="outline: none;" class="textui">Subscription</span>
+                        </a>
+                    </li>
+                    <li routerLink='/misc/view-sliders' routerLinkActive="active-link">
+                        <a href="javascript: void(0);" class="waves-effect" aria-expanded="false">
+                            <!-- <i class="mdi mdi-account"></i> -->
+                            <span style="outline: none;" class="textui">Sliders</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+    <!-- End Sidebar -->
+
+    <div class="clearfix"></div>
+</ng-template>
+
+
+<ng-template #userProfile>
+    <div class="user-box text-center">
+        <!-- <img src="assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme"
+            class="rounded-circle img-thumbnail avatar-lg"> -->
+        <div class="dropdown" ngbDropdown>
+            <!-- <a href="javascript: void(0)" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown"
+                ngbDropdownToggle>Nik Patel</a> -->
+            <div class="dropdown-menu user-pro-dropdown" ngbDropdownMenu>
+
+                <!-- item-->
+                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <i class="fe-user mr-1"></i>
+                    <span>My Account</span>
+                </a>
+
+                <!-- item-->
+                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <i class="fe-settings mr-1"></i>
+                    <span>Settings</span>
+                </a>
+
+                <!-- item-->
+                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <i class="fe-lock mr-1"></i>
+                    <span>Lock Screen</span>
+                </a>
+
+                <!-- item-->
+                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <i class="fe-log-out mr-1"></i>
+                    <span>Logout</span>
+                </a>
+
+            </div>
+        </div>
+        <!-- <p class="text-muted">Admin Head</p>
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <a href="#" class="text-muted">
+                    <i class="mdi mdi-settings"></i>
+                </a>
+            </li>
+
+            <li class="list-inline-item">
+                <a href="#" class="text-custom">
+                    <i class="mdi mdi-power"></i>
+                </a>
+            </li>
+        </ul> -->
+    </div>
+</ng-template>
+
+<div class="left-side-menu" style="background-color: #0e0d0d!important;">
+    <div class="slimscroll-menu" appSlimScroll *ngIf="!isCondensed">
+        <ng-container *ngTemplateOutlet="userProfile"></ng-container>
+        <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </div>
+
+    <div class="slimscroll-menu" *ngIf="isCondensed">
+        <ng-container *ngTemplateOutlet="userProfile"></ng-container>
+        <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </div>
+
+</div>
+<!-- Left Sidebar End -->

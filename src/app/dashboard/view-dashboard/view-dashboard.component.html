@@ -1,0 +1,133 @@
+
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<div id="wrapper">
+    <div class="content-page">
+        <div class="content" style="  overflow-y: hidden;">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-sm-6 col=md-3 col-lg-3 col-xl-3 d-flex align-items-stretch">
+                        <div class="row d-flex align-items-stretch cards m-1 ">
+                            <div class="col-3 p--0 bg-red d-flex align-items-center left-round">
+                                <img class="img-fluid" src="/assets/images/product.png" alt="Card image cap">
+                            </div>
+                            <div class="col-9 bg-grey d-flex justify-content-end align-items-center right-round py-2">
+                                <div>
+                                    <p class="card-title m--0 py-1 pr-2 text-right">Products</p>
+                                    <p class="card-title m--0 py-1 pr-2 text-right">{{this.Countproduct}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col=md-3 col-lg-3 col-xl-3 d-flex align-items-stretch">
+                        <div class="row d-flex align-items-stretch cards m-1">
+                            <div class="col-3 p--0 bg-red d-flex align-items-center left-round">
+                                <img class="img-fluid" src="/assets/images/brand.png" alt="Card image cap">
+                            </div>
+                            <div class="col-9 bg-grey d-flex justify-content-end align-items-center right-round py-2">
+                                <div>
+                                    <p class="card-title m--0 py-1 pr-2 text-right">Brands</p>
+                                    <p class="card-title m--0 py-1 pr-2 text-right">{{this.Countbrand}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col=md-3 col-lg-3 col-xl-3 d-flex align-items-stretch">
+                        <div class="row d-flex align-items-stretch cards m-1">
+                            <div class="col-3 p--0 bg-red d-flex align-items-center left-round">
+                                <img class="img-fluid" src="/assets/images/category.png" alt="Card image cap">
+                            </div>
+                            <div class="col-9 bg-grey d-flex justify-content-end align-items-center right-round py-2">
+                                <div>
+                                    <p class="card-title m--0 py-1 pr-2 text-right">Categories</p>
+                                    <p class="card-title m--0 py-1 pr-2 text-right">{{this.CountCategory}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col=md-3 col-lg-3 col-xl-3 d-flex align-items-stretch">
+                        <div class="row d-flex align-items-stretch cards m-1">
+                            <div class="col-3 p--0 bg-red d-flex align-items-center left-round">
+                                <img class="img-fluid" src="/assets/images/sub category.png" alt="Card image cap">
+                            </div>
+                            <div class="col-9 bg-grey d-flex justify-content-end align-items-center right-round py-2">
+                                <div>
+                                    <p class="card-title m--0 py-1 pr-2 text-right">Sub-Categories</p>
+                                    <p class="card-title m--0 py-1 pr-2 text-right">{{this.CountSubCategory}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row ">
+                    <div class="col-sm-6 col=md-3 col-lg-3 col-xl-3 d-flex align-items-stretch">
+                        <div class="row d-flex align-items-stretch cards m-1">
+                            <div class="col-3 p--0 bg-red d-flex align-items-center left-round">
+                                <img class="img-fluid" src="/assets/images/order.png" alt="Card image cap">
+                            </div>
+                            <div class="col-9 bg-grey d-flex justify-content-end align-items-center right-round py-2">
+                                <div>
+                                    <p class="card-title m--0 py-1 pr-2 text-right">Orders</p>
+                                    <p class="card-title m--0 py-1 pr-2 text-right">{{ this.CountOrders}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col=md-3 col-lg-3 col-xl-3 d-flex align-items-stretch">
+                        <div class="row d-flex align-items-stretch cards m-1">
+                            <div class="col-3 p--0 bg-red d-flex align-items-center left-round">
+                                <img class="img-fluid" src="/assets/images/pending order.png" alt="Card image cap">
+                            </div>
+                            <div class="col-9 bg-grey d-flex justify-content-end align-items-center right-round py-2">
+                                <div>
+                                    <p class="card-title m--0 py-1 pr-2 text-right">Pending Orders</p>
+                                    <p class="card-title m--0 py-1 pr-2 text-right">{{this.CountPendingOrders}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col=md-3 col-lg-3 col-xl-3 d-flex align-items-stretch">
+                        <div class="row d-flex align-items-stretch cards m-1">
+                            <div class="col-3 p--0 bg-red d-flex align-items-center left-round">
+                                <img class="img-fluid" src="/assets/images/shipped order.png" alt="Card image cap">
+                            </div>
+                            <div class="col-9 bg-grey d-flex justify-content-end align-items-center right-round py-2">
+                                <div>
+                                    <p class="card-title m--0 py-1 pr-2 text-right">Shipped Orders</p>
+                                    <p class="card-title m--0 py-1 pr-2 text-right">{{this.shippedOrders}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col=md-3 col-lg-3 col-xl-3 d-flex align-items-stretch">
+                        <div class="row d-flex align-items-stretch cards m-1">
+                            <div class="col-3 p--0 bg-red d-flex align-items-center left-round">
+                                <img class="img-fluid" src="/assets/images/ordee completed.png" alt="Card image cap">
+                            </div>
+                            <div class="col-9 bg-grey d-flex justify-content-end align-items-center right-round py-2">
+                                <div>
+                                    <p class="card-title m--0 py-1 pr-2 text-right">Completed Orders</p>
+                                    <p class="card-title m--0 py-1 pr-2 text-right">{{this.completedOrders}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="cards card-box ml-1">
+                            <h4 class="header-title mt-0 mb-3 text-center">Coupan Code Tracking</h4>
+                            <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+                        </div>
+                    </div><!-- end col-->
+                </div>
+                <!-- end row -->
+            </div>
+        </div>
+    </div>
+</div>

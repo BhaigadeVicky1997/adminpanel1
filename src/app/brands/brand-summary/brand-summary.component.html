@@ -1,0 +1,201 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<!-- Begin Page Product Brand -->
+<div id="wrapper">
+    <div class="content-page">
+        <!-- Update Brand Start -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <span class="heading">Brand Details</span>
+                            <form class="form-horizontal" id="form" parsley-validate><br>
+                                <div class="row">
+                                    <div class="col-md-6 col-xl-3 justify-content-center">
+                                        <div class="card">
+                                            <img style="width: 200px;height: 200px;margin-top: -25px;" [src]="imagePath"
+                                                alt="Card image cap">
+                                            <div class="card-body">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-6 col-xl-9">
+                                        <div class="row" style="position: relative;top: -1em;">
+                                            <div class="col-12 col-lg-4">
+                                                <label class="col-form-label">Brand Name</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" [(ngModel)]="bName1"
+                                                        name="Namebrand">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-icon waves-effect btn-secondary"
+                                                            type="submit" (click)="brandUpadate('nameBrands')">
+                                                            <i class="fas fa-check"></i> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-lg-4">
+                                                <label class="col-form-label">Popular Brand</label>
+                                                <div class="input-group">
+                                                    <select class="form-control" id="popular2" [(ngModel)]="popular2"
+                                                        name="popBrand">
+                                                        <!-- <option>{{i.photoOrder}}</option> -->
+                                                        <option value="0">0</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                    </select>
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-icon waves-effect btn-secondary"
+                                                            type="submit" (click)="brandUpadate('popularBrands')">
+                                                            <i class="fas fa-check"></i> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-lg-4">
+                                                <label class="col-form-label">Order</label>
+                                                <div class="input-group">
+                                                    <select class="form-control" id="trendingbrand3"
+                                                        [(ngModel)]="trendingbrand3" name="trendBrand">
+                                                        <!-- <option>{{i.photoOrder}}</option> -->
+                                                        <option value="0">0</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                    </select>
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-icon waves-effect btn-secondary"
+                                                            type="submit" (click)="brandUpadate('trendingsbrands')">
+                                                            <i class="fas fa-check"></i> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-md-6 col-lg-4">
+                                                <label class="col-form-label">Trending Brand</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" [(ngModel)]="trendingbrand3"
+                                                        name="BrandTrendings">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-icon waves-effect btn-secondary"
+                                                            type="submit" (click)="brandUpadate()">
+                                                            <i class="fas fa-check"></i> </button>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                            <div class="col-12 col-lg-4">
+                                                <label class="col-form-label">Brand Image</label>
+                                                <div class="input-group">
+                                                    <input type="file"
+                                                        accept="image/gif, image/jpeg, image/png, image/jpeg"
+                                                        class="form-control" name="images" multiple
+                                                        (change)="selectMultipleImage($event)">
+
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-icon waves-effect btn-secondary"
+                                                            type="submit" (click)="UpdateBrand()">
+                                                            <i class="fas fa-check"></i> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-12 col-lg-4">
+                                                <label class="col-form-label">Active Variant</label><br>
+                                                <label class="switch">
+                                                    <input type="checkbox" (change)="brandUpadate('toggleVariant')"
+                                                        [(ngModel)]="ActiveToggle" name="myCheck">
+                                                    <span class="slider round"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Update Brand End -->
+
+        <!-- Product start -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <span class="heading">Products</span>
+                            <div class="responsive-table-plugin">
+                                <div class="table-rep-plugin">
+                                    <div class="table-responsive" data-pattern="priority-columns">
+                                        <table id="tech-companies-1" class="table table-bordered dt-responsive nowrap">
+                                            <thead>
+                                                <tr style="cursor: pointer;">
+                                                    <th (click)="filterTableColumn('id','int')">SKU </th>
+                                                    <th (click)="filterTableColumn('variantName','str')">Name</th>
+                                                    <th (click)="filterTableColumn('variantPrice','int')">MRP</th>
+                                                    <th (click)="filterTableColumn('variantSalePrice','int')">Sale-Price
+                                                    </th>
+                                                    <th (click)="filterTableColumn('activeVariant','str')">Active</th>
+                                                    <th (click)="filterTableColumn(['brand','brand_name'],'str')">Brand
+                                                    </th>
+                                                    <th (click)="filterTableColumn(['category','categoryName'],'str')">
+                                                        Category</th>
+                                                    <th
+                                                        (click)="filterTableColumn(['subCategory','subCategoryName'],'str')">
+                                                        Sub-Category</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr
+                                                    *ngFor="let i of ParticularBrands |filter:filterInput | paginate: { itemsPerPage: 10, currentPage: p,totalItems: pageno};let index=index;">
+                                                    <td>{{i.productSKU}}</td>
+                                                    <td>{{i.variantName}}</td>
+                                                    <td style="text-align:right">{{i.variantPrice | number : '1.2-2'}}
+                                                    </td>
+                                                    <td style="text-align:right">
+                                                        {{i.variantSalePrice | number : '1.2-2'}}</td>
+                                                    <td><label class="switch">
+                                                            <input type="checkbox" name="activeVarient{{index}}"
+                                                                [(ngModel)]="i.activeVariant">
+                                                            <span class="slider round"></span>
+                                                        </label>
+                                                    </td>
+                                                    <!-- <td>{{i.brand.brand_name}}</td> -->
+                                                    <td *ngIf="i.brand == null">Not Available</td>
+                                                    <td *ngIf="i.brand != null">{{i.brand.brand_name}}</td>
+                                                    <td *ngIf="i.category == null">Not Available</td>
+                                                    <td *ngIf="i.category != null">{{i.category.categoryName}}</td>
+                                                    <td *ngIf="i.subCategory == null">Not Available</td>
+                                                    <td *ngIf="i.subCategory != null">{{i.subCategory.subCategoryName}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bs-example" style="text-align: right;">
+                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product End -->
+    </div>
+</div>

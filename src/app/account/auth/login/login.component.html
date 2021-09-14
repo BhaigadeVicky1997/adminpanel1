@@ -1,0 +1,53 @@
+<app-ui-preloader [display]="loading"></app-ui-preloader>
+<ngb-alert type="danger" *ngIf="error" [dismissible]="false">{{ error }}</ngb-alert>
+<div class="container-fluid bg-black d-flex align-items-center" style="height: 100vh;">
+  <div class="spinner-border text-custom m-2 disnone" id="load" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  
+  <div class="row d-flex align-items-center" style="width: 100vw;">
+    <div class="col-6 d-flex justify-content-end">
+      <img src="./assets/images/new-logo.png" class="img-fluid m--0 pr-1 pr-sm-2 pr-md-3 pr-lg-4 pr-xl-5">
+    </div>
+    <div class="col-6 pl-1 pl-sm-2 pl-md-3 pl-lg-4 pl-xl-5" style="border-left: 2px solid white;">
+      <div class="row">
+        <div class="col-8 m--0 my-2">
+          <div class="row d-flex align-items-center bg-white">
+            <div class="col-2 p--0 d-flex justify-content-center left-round" style="background-color: #D31D28;">
+              <i class="fa fa-user loginfont p-2"></i>
+            </div>
+            <div class="col-10 p--0">
+              <input class="form-control" type="email" Placeholder="Email Address" id="email" required
+                class="boxwidth right-round px-1 py-2">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-8 m--0 my-2">
+          <div class="row d-flex align-items-center bg-white">
+            <div class="col-2 p--0 d-flex justify-content-center left-round" style="background-color: #D31D28;">
+              <i class="fa fa-lock loginfont p-2"></i>
+            </div>
+            <div class="col-10 p--0">
+              <input class="form-control" type="password" Placeholder="Password" id="password" required
+                class="boxwidth right-round px-1 py-2">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-8 m--0 my-2">
+          <div class="row d-flex align-items-center">
+            <div class="col-12 p--0 d-flex justify-content-start">
+              <button type="button" (click)="LoginApi()"
+              class="btn btn-block btn--md waves-effect waves-light loginbutton">Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-atom"> <!-- [fullScreen] = "true" -->
+  <p style="color: white" > Please wait</p>
+</ngx-spinner>

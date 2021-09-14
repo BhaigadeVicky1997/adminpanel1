@@ -1,0 +1,61 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<!-- Begin Page  -->
+<div id="wrapper">
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <span class="heading">Sub-Category Details</span>
+                            <form class="form-horizontal" id="form" parsley-validate>
+                                <div class="row">
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Category ID</label>
+                                        <div class="input-group">
+                                            <!-- <input type="text" class="form-control" style="background-color: #e4e6e6;"
+                                                [(ngModel)]="catID" name="categoryIDs" readonly> -->
+                                            <select class="form-control" [(ngModel)]="catID" name="categoryIds"
+                                                required>
+                                                <option value="{{i.id}}" *ngFor="let i of CategoryID">
+                                                    {{i.id}}</option>
+                                            </select>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="SubCategoryUpadate()">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Sub-Category Name</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" [(ngModel)]="subname"
+                                                name="subCatName">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="SubCategoryUpadate()">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 col-lg-4">
+                                        <label class="col-form-label">Active Variant</label><br>
+                                        <label class="switch">
+                                            <input type="checkbox" (change)="SubCategoryUpadate()"
+                                            [(ngModel)]="ActiveToggle" name="myCheck">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end page -->
+    </div>
+</div>

@@ -1,0 +1,633 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<div id="wrapper">
+    <div class="content-page">
+        <!-- Update Product start -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card-box" *ngIf="productSummary">
+                            <span class="heading">Product Details</span>
+                            <form class="form-horizontal" id="form" parsley-validate>
+                                <div class="row">
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">SKU</label>
+                                        <div class="input-group">
+                                            <input style="background-color: #e4e6e6;" type="text" class="form-control"
+                                                id="Sku1" value="{{productSummary.productSKU}}" readonly>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="readOnlyFun('You Cannot Update SKU')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Name</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="namme2" name="namme2"
+                                                value="{{productSummary.variantName}}">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="updatefunction('name')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">MRP</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="mrp3"
+                                                value="{{productSummary.variantPrice}}" (change)="getCalculate()">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="updatefunction('mrp')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Sale Price</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="salePrice4"
+                                                value="{{productSummary.variantSalePrice}}" (change)="getCalculate()">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="updatefunction('salePrice')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Discount</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="disc"
+                                                value="{{this.Discountproduct}}" readonly>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="updatefunction('discount')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Brand</label>
+                                        <div class="input-group">
+                                            <select class="form-control" id="brand5"
+                                                [(ngModel)]="productSummary.brand.id" name="brandIDS">
+                                                <option value="{{i.id}}" *ngFor="let i of Brand">
+                                                    {{i.id + "-" + i.brand_name}}</option>
+                                            </select>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="updatefunction('brand')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Category</label>
+                                        <div class="input-group">
+                                            <select class="form-control" id="category6" name="categorySelect"
+                                                [(ngModel)]="productSummary.category.id" (change)="getfilter($event)">
+                                                <!--    <option value="{{productSummary.category.id}}">
+                                                    {{productSummary.category.categoryName}}</option> -->
+                                                <option value="{{i.id}}" *ngFor="let i of catDrop">
+                                                    {{i.id + "-" + i.categoryName}}
+                                                </option>
+                                            </select>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="updatefunction('category')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Sub-Category</label>
+                                        <div class="input-group">
+                                            <select class="form-control" id="subcategory7">
+                                                <option>
+                                                    {{ productSummary.subCategory.id + "-" + productSummary.subCategory.subCategoryName}}
+                                                </option>
+                                                <option value="{{i.id}}" *ngFor="let i of subCatDrop">
+                                                    {{i.id + "-" + i.subCategoryName}}
+                                                </option>
+
+                                            </select>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="updatefunction('subcategory')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Crazy Deal</label><br>
+                                        <div class="input-group">
+                                            <select class="form-control" id="crazyDeals" [(ngModel)]="crazyDeals"
+                                                name="craSelect">
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                                <option value="24">24</option>
+                                            </select>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="updatefunction('deal')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Popular</label>
+                                        <div class="input-group">
+                                            <select class="form-control" id="popular8" [(ngModel)]="this.ppoluar"
+                                                name="popSelect">
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                            </select>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="updatefunction('popular')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Trending</label>
+                                        <div class="input-group">
+                                            <select class="form-control" id="trending9" [(ngModel)]="trends"
+                                                name="trendSelect">
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                            </select>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="updatefunction('trend')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Best Seller</label><br>
+                                        <div class="input-group">
+                                            <select class="form-control" id="Combo" [(ngModel)]="Combo"
+                                                name="BestSelect">
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                                <option value="24">24</option>
+                                            </select>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="updatefunction('seller')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Newly Launched</label><br>
+                                        <div class="input-group">
+                                            <select class="form-control" id="newlaunch" name="NewSelect"
+                                                value ="{{productSummary.newlyLunched}}">
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                                <option value="24">24</option>
+                                            </select>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="updatefunction('newLaunch1')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Weight</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="weight"
+                                                value="{{productSummary.weight}}">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="updatefunction('weight')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Veg/Non Veg</label><br>
+                                        <div class="input-group">
+                                            <select class="form-control" id="vegnonveg" 
+                                                value ="{{productSummary.veg}}">
+                                                <option value="0">Non Veg</option>
+                                                <option value="1">Veg</option>
+
+                                            </select>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="updatefunction('vegnonveg1')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Number of Servings</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="servings"
+                                                value="{{productSummary.numberOfServings}}">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="updatefunction('nservings')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Active Variant</label><br>
+                                        <label class="switch">
+                                            <input type="checkbox" (change)="updatefunction('activevariant')"
+                                                [(ngModel)]="ActiveToggle" name="myCheck">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class=" col-md-12">
+                                        <label class="col-form-label">Product Description</label>
+                                        <ejs-richtexteditor [(ngModel)]='productSummary.productDescription'
+                                            name="namme2"
+                                            style="position: relative;z-index: 0;height: -webkit-fill-available;height: 12em;">
+                                        </ejs-richtexteditor>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-icon waves-effect btn-secondary btn-block"
+                                                        type="submit" (click)="updatefunction('description')">
+                                                        <i class="fas fa-check"></i> </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class=" col-md-12">
+                                        <label class="col-form-label">Short Description</label>
+                                        <textarea class="form-control" id="shortdescription" maxlength="160"
+                                            name="shortdescription" #shortdescription
+                                            [(ngModel)]="productSummary.shortDescription"></textarea>
+
+                                        <label style="color:black; padding-top: 10px;"> Characters Remaining:
+                                            {{ shortdescription.value.length }}/160
+
+                                        </label>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-icon waves-effect btn-secondary btn-block"
+                                                        type="submit" (click)="updatefunction('Sdescription')">
+                                                        <i class="fas fa-check"></i> </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Update Product end -->
+
+        <!-- Product Pictures start -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <span class="heading">Product Pictures</span>
+                            <button class="btn btn-secondary buttons-pdf buttons-html5" tabindex="0"
+                                (click)="productpic(id)" aria-controls="datatable-buttons"
+                                style="float: right;margin-top: -5px;">
+                                Add
+                            </button>
+
+                            <div class="responsive-table-plugin">
+                                <div class="table-rep-plugin">
+                                    <div class="table-responsive" data-pattern="priority-columns">
+                                        <table id="tech-companies-1" class="table table-bordered dt-responsive nowrap">
+                                            <thead>
+                                                <tr style="cursor: pointer;">
+                                                    <th (click)="filterTableColumn('id','int')">ID</th>
+                                                    <th (click)="filterTableColumn('id','long')">Image</th>
+                                                    <th (click)="filterTableColumn('id','str')">Image Name</th>
+                                                    <th (click)="filterTableColumn('id','long')">Thumbnail</th>
+                                                    <th (click)="filterTableColumn('id','str')">Thumbnail Name</th>
+                                                    <!-- <th (click)="filterTableColumn('id','str')">Active Image</th> -->
+                                                    <th (click)="filterTableColumn('id','int')">Image Order </th>
+                                                    <th>Delete Image </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let i of productPictures | slice:0:8">
+                                                    <td>{{i.id}}</td>
+                                                    <td><img class="card-img-top img-fluid"
+                                                            src="{{apiserveice.domainname}}product-variant-pic/{{i.productVariantPhoto}}"
+                                                            style="height: 7em;width: 7em;" alt="Card image cap">
+                                                    </td>
+                                                    <td>{{i.productVariantPhoto}}</td>
+                                                    <td><img class="card-img-top img-fluid"
+                                                            src="{{apiserveice.domainname}}product-variant-thumbnail/{{i.productVariantThumbnail}}"
+                                                            style="height: 7em;width: 7em;" alt="Card image cap"></td>
+                                                    <td>{{i.productVariantThumbnail}}</td>
+                                                    <!-- <td><label class="switch">
+                                                            <input type="checkbox" checked data-toggle="toggle">
+                                                            <span class="slider round"></span>
+                                                        </label>
+                                                    </td> -->
+                                                    <td>
+                                                        <div class="row d-flex justify-content-center">
+                                                            <div class="">
+                                                                <div class="input-group">
+                                                                    <select class="form-control" id="photos"
+                                                                        [(ngModel)]="i.photoOrder"
+                                                                        (change)="getPhotoOrder($event)">
+                                                                        <!-- <option>{{i.photoOrder}}</option> -->
+                                                                        <option value="1">1</option>
+                                                                        <option value="2">2</option>
+                                                                        <option value="3">3</option>
+                                                                        <option value="4">4</option>
+                                                                        <option value="5">5</option>
+                                                                        <option value="6">6</option>
+                                                                        <option value="7">7</option>
+                                                                        <option value="8">8</option>
+                                                                        <option value="9">9</option>
+                                                                        <option value="10">10</option>
+                                                                    </select>
+                                                                    <div class="input-group-append">
+                                                                        <button
+                                                                            class="btn btn-icon waves-effect btn-secondary"
+                                                                            type="submit"
+                                                                            (click)="updateImageOrder(i.id)">
+                                                                            <i class="fas fa-check"></i> </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td><button class="btn btn-secondary waves-effect"
+                                                            (click)="deleteeproductpic(i.id)"><i
+                                                                class="fas fa-times"></i></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product Pictures end -->
+
+        <!-- Product flavour start -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <span class="heading">Product Flavour</span>
+                            <button class="btn btn-secondary buttons-pdf buttons-html5" tabindex="0"
+                                aria-controls="datatable-buttons" style="float: right;margin-top: -5px;"
+                                (click)="pVariantID(id)">
+                                Add
+                            </button>
+                            <div class="responsive-table-plugin">
+                                <div class="table-rep-plugin">
+                                    <div class="table-responsive" data-pattern="priority-columns">
+                                        <table id="tech-companies-1" class="table table-bordered dt-responsive nowrap">
+                                            <thead>
+                                                <tr style="cursor: pointer;">
+                                                    <th (click)="filterTableColumns('id','int')">ID</th>
+                                                    <th (click)="filterTableColumns('flavour_name','str')">Flavour Name
+                                                    </th>
+                                                    <th (click)="filterTableColumns('active_flavour','str')">Active
+                                                        Image
+                                                    </th>
+                                                    <th>Operation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let i of Flavour">
+                                                    <td class="links"
+                                                        style="cursor: pointer;outline: none;color: #D31D28 !important;"
+                                                        (click)="productFlavour(i.id,i.productVariantId)">{{i.id}}</td>
+                                                    <td>{{i.flavour_name}}</td>
+                                                    <td><label class="switch">
+                                                            <input type="checkbox" [(ngModel)]="i.active_flavour"
+                                                                name="FlavourSwitch{{index}}"
+                                                                (change)="updateActiveFlavour(i)">
+                                                            <span class="slider round"></span>
+                                                        </label></td>
+                                                    <td>
+                                                        <button class="btn btn-secondary waves-effect" type="submit"
+                                                            (click)="deleteeFlavour(i.id)"><i class="fas fa-times"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Product flavour end -->
+
+        <!-- Coupan Code start -->
+        <!-- <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <span class="heading">Coupan Code</span>
+                                </div>
+                                <div class="col-sm-12 col-md-6 text-right">
+                                    <div class="btn-group">
+                                        <div class="btn-group">
+                                            <select id="inputState" class="form-control mr-1" id="subcategory7"
+                                                (change)="GetCoupanCodeID($event)">
+                                                <option></option>
+                                                <option value="{{i.id}}" *ngFor="let i of coupancodes">
+                                                    {{i.coupan_code}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <button class="btn btn-secondary buttons-pdf buttons-html5" tabindex="0"
+                                            aria-controls="datatable-buttons" (click)="CoupanAddingWithParticularID()">
+                                            Add
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div><br>
+                            <div class="responsive-table-plugin">
+                                <div class="table-rep-plugin">
+                                    <div class="table-responsive" data-pattern="priority-columns">
+                                        <table id="tech-companies-1" class="table table-bordered dt-responsive nowrap">
+                                            <thead>
+                                                <tr style="cursor: pointer;">
+                                                    <th (click)="filterTableColumnss(['coupan_code','id'],'int')">ID
+                                                    </th>
+                                                    <th
+                                                        (click)="filterTableColumnss(['coupan_code','coupan_code'],'str')">
+                                                        Coupan Code</th>
+                                                    <th
+                                                        (click)="filterTableColumnss(['coupan_code','coupan_code_message'],'str')">
+                                                        Coupan Code Message</th>
+                                                    <th (click)="filterTableColumnss(['coupan_code','discount'],'str')">
+                                                        Discount</th>
+                                                    <th>Operation</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let i of Ccoupanid">
+                                                    <td>{{i.coupan_code.id}}</td>
+                                                    <td>{{i.coupan_code.coupan_code}}</td>
+                                                    <td>{{i.coupan_code.coupan_code_message}}</td>
+                                                    <td>{{i.coupan_code.discount}}</td>
+                                                    <td>
+                                                        <button class="btn btn-secondary waves-effect" type="submit"
+                                                            (click)="deleteeCoupan(i.productCoupanId)"><i
+                                                                class="fas fa-times"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- Coupan Code end -->
+    </div>
+</div>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-atom">
+    <p style="color: white"> Adding</p>
+</ngx-spinner>

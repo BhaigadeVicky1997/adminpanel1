@@ -1,0 +1,296 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<!-- Begin page -->
+<div id="wrapper">
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-sm-12">
+                        <div class="card-box">
+                            <h4 class="header-title mt-0 mb-3">Add Products</h4>
+                            <form [formGroup]="addFrom">
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label">SKU</label>
+                                        <input style="background-color: #e4e6e6;" type="text" class="form-control"
+                                            id="SKU1" value="{{this.skus}}" placeholder="SKU" readonly>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label">Name*</label>
+                                        <input type="text" class="form-control" formControlName="names" id="name2"
+                                            placeholder="Name" required>
+                                        <span class="alert"
+                                            *ngIf="!addFrom.get('names').valid && addFrom.get('names').touched">
+                                            Please Enter Name.
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label">MRP*</label>
+                                        <input type="number" class="form-control" formControlName="mrps" id="Mrp3"
+                                            placeholder="MRP" (change)="getCalculate()" required>
+                                        <span class="alert"
+                                            *ngIf="!addFrom.get('mrps').valid && addFrom.get('mrps').touched">
+                                            Please Enter MRP.
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 abc">
+                                        <label class="col-form-label">Sale Price*</label>
+                                        <input type="number" class="form-control" id="salePrice4"
+                                            formControlName="salepricess" (change)="getCalculate()"
+                                            placeholder="Sale Price" required>
+                                        <span class="alert"
+                                            *ngIf="!addFrom.get('salepricess').valid && addFrom.get('salepricess').touched">
+                                            Please Enter Sale Price.
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-4 abc">
+                                        <label class="col-form-label">Discount</label>
+                                        <input style="background-color: #e4e6e6;" type="number" class="form-control"
+                                            id="discProduct" value="{{this.Discountproduct}}" placeholder="Discount"
+                                            readonly>
+                                    </div>
+                                    <div class="form-group col-md-4 abc">
+                                        <label class="col-form-label">Brand*</label>
+                                        <select class="form-control" id="brand5" formControlName="brandss" required>
+                                            <option></option>
+                                            <option value="{{i.id}}" *ngFor="let i of Brand">
+                                                {{i.id + "-" + i.brand_name}}</option>
+                                        </select>
+                                        <span class="alert"
+                                            *ngIf="!addFrom.get('brandss').valid && addFrom.get('brandss').touched">
+                                            Please Enter Brand.
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 abc">
+                                        <label class="col-form-label">Category*</label>
+                                        <select class="form-control" id="category6" formControlName="catss"
+                                            (change)="getfilter($event)">
+                                            <option></option>
+                                            <option value="{{i.id}}" *ngFor="let i of catDrop">
+                                                {{i.id + "-" + i.categoryName}}
+                                            </option>
+                                        </select>
+                                        <span class="alert"
+                                            *ngIf="!addFrom.get('catss').valid && addFrom.get('catss').touched">
+                                            Please Enter Category.
+                                        </span>
+                                    </div>
+
+                                    <div class="form-group col-md-4 abc">
+                                        <label class="col-form-label">Sub-Category*</label>
+                                        <select class="form-control" id="subcategory7" formControlName="subcatsss"
+                                            required>
+                                            <option> </option>
+                                            <option value="{{i.id}}" *ngFor="let i of subCatDrop">
+                                                {{i.id + "-" + i.subCategoryName}}
+                                            </option>
+                                        </select>
+                                        <span class="alert"
+                                            *ngIf="!addFrom.get('subcatsss').valid && addFrom.get('subcatsss').touched">
+                                            Please Enter Sub-Category.
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-4 abc">
+                                        <label class="col-form-label">Crazy Deals</label>
+                                        <select class="form-control" id="crazyyyy" required>
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 abc">
+                                        <label class="col-form-label">Popular</label>
+                                        <select class="form-control" id="popular8" required>
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4 abc">
+                                        <label class="col-form-label">Trending</label>
+                                        <select class="form-control" id="trending9" required>
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4 abc">
+                                        <label class="col-form-label">Best seller</label>
+                                        <select class="form-control" id="bseller" required>
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-4 abc">
+                                        <label class="col-form-label">Newly Launched</label>
+                                        <select class="form-control" id="newlylaunched" required>
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+
+                                        </select>
+                                    </div>
+
+
+                                    <div class="form-group col-md-4 abc">
+                                        <label class="col-form-label">Weight*</label>
+                                        <input type="number" class="form-control" id="saleweight"
+                                            formControlName="weight" placeholder="Weight" required>
+                                        <span class="alert"
+                                            *ngIf="!addFrom.get('weight').valid && addFrom.get('weight').touched">
+                                            Please Enter Weight of product.
+                                        </span>
+                                    </div>
+
+
+                                    <div class="form-group col-md-4 abc">
+                                        <label class="col-form-label">Veg/Non-Veg</label>
+                                        <select class="form-control" id="vegnonveg" required>
+                                            <option value="0">Non Veg</option>
+                                            <option value="1">Veg</option>
+
+                                        </select>
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-4 abc">
+                                        <label class="col-form-label">Number of Servings*</label>
+                                        <input type="number" class="form-control" id="nofs" formControlName="nofs"
+                                            placeholder="Number of Servings" required>
+                                        <span class="alert"
+                                            *ngIf="!addFrom.get('nofs').valid && addFrom.get('nofs').touched">
+                                            Please Enter Number of Servings.
+                                        </span>
+                                    </div>
+
+                                    <div class="form-group col-md-3 abc">
+                                        <label class="col-form-label">Active Variant</label><br>
+                                        <label class="switch">
+                                            <input type="checkbox" [(ngModel)]="ActiveToggle"
+                                                [ngModelOptions]="{standalone: true}" name="myCheck">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <button class="btn btn-secondary waves-effect waves-light btn-block"
+                                    [disabled]="!addFrom.valid" (click)="addProducts()" type="submit">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End page -->
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-atom">
+    <p style="color: white"> Adding</p>
+</ngx-spinner>

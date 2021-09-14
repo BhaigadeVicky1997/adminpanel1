@@ -1,0 +1,60 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<!-- Begin page -->
+<div id="wrapper">
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-sm-12">
+                        <div class="card-box">
+                            <h4 class="header-title mt-0 mb-3">Add Sub-Categories</h4>
+                            <form [formGroup]="addFrom">
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label">Category*</label>
+                                        <select class="form-control" [(ngModel)]="cat1" name="categoryIds"
+                                            formControlName="CatDrop" required>
+                                            <option></option>
+                                            <option *ngFor="let i of CategoryID">
+                                                {{i.id}}</option>
+                                        </select>
+                                        <span class="alert"
+                                            *ngIf="!addFrom.get('CatDrop').valid && addFrom.get('CatDrop').touched">
+                                            Please Choose Category ID.
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label">Sub-Category Name*</label>
+                                        <input type="text" class="form-control" [(ngModel)]="Subname1"
+                                            formControlName="SubCategoryNames" name="Sub-categoryNames"
+                                            placeholder="Sub-Category Name" required>
+                                        <span class="alert"
+                                            *ngIf="!addFrom.get('SubCategoryNames').valid && addFrom.get('SubCategoryNames').touched">
+                                            Please Enter Sub-Category Name.
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label">Active Variant</label><br>
+                                        <label class="switch">
+                                            <input type="checkbox" [(ngModel)]="ActiveToggle"
+                                            [ngModelOptions]="{standalone: true}" name="myCheck">
+                                        <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <button class="btn btn-secondary waves-effect waves-light btn-block"
+                                    [disabled]="!addFrom.valid" (click)="insertSubCategories()"
+                                    type="submit">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End page -->
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-atom">
+    <p style="color: white"> Adding</p>
+</ngx-spinner>

@@ -1,0 +1,210 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<!-- Begin Page Product Coupan Code -->
+<div id="wrapper">
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <span class="heading">Coupon Code Details</span>
+                            <form class="form-horizontal" id="form" parsley-validate>
+                                <div class="row">
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Code Type</label>
+                                        <div class="input-group">
+                                            <select class="form-control" id="type2" [(ngModel)]="codetypess"
+                                                name="popBrand">
+                                                <!-- <option>{{i.photoOrder}}</option> -->
+                                                <option value="FLAT">FLAT</option>
+                                                <option value="PERCENTAGE">PERCENTAGE</option>
+
+                                            </select>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="particularCoupanCodeUpadate('type')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Discount</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" [(ngModel)]="Discounts" name="disc">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="particularCoupanCodeUpadate('dis')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Coupon Code</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control text-uppercase"
+                                                [(ngModel)]="coupanCodes" name="coupan">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="particularCoupanCodeUpadate('code')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-6 col-lg-4">
+                                        <label class="col-form-label">Coupon Code Message</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" [(ngModel)]="CCmessage"
+                                                name="codemessage">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-icon waves-effect btn-secondary" type="submit"
+                                                    (click)="particularCoupanCodeUpadate('mess')">
+                                                    <i class="fas fa-check"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 col-lg-4">
+                                        <label class="col-form-label">Active</label><br>
+                                        <label class="switch">
+                                            <input type="checkbox" (change)="particularCoupanCodeUpadate('toggleee')"
+                                                [(ngModel)]="ActiveToggle" name="myCheck">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div> -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- All products FLAT start -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 mb-5">
+                        <div class="card-box">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="dt-buttons btn-group">
+                                        <span class="heading">Products</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 text-right">
+                                    <div id="datatable-buttons_filter" class="dataTables_filter">
+                                        Search:
+                                        <label>
+                                            <input type="search" class="form-control form-control-sm"
+                                                placeholder="search" aria-controls="datatable-buttons"
+                                                [(ngModel)]="filterInput">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div><br>
+                            <div class="responsive-table-plugin">
+                                <div class="table-rep-plugin">
+                                    <div class="table-responsive" data-pattern="priority-columns">
+                                        <table id="example" class="table table-bordered dt-responsive nowrap">
+                                            <thead>
+                                                <tr style="cursor: pointer;">
+                                                    <th>
+                                                        <input type="checkbox" id="ckbCheckAll" value="send"
+                                                            (change)="selectAll($event)" />
+                                                    </th>
+                                                    <th>SKU </th>
+                                                    <th>Name</th>
+                                                    <th>MRP</th>
+                                                    <th>Sale-Price
+                                                    </th>
+                                                    <th>Discount
+                                                    </th>
+                                                    <th>Active</th>
+                                                    <!-- <th *ngIf="type">{{(type.toLowerCase()=='flat')?'Active Flat':'Active Percentage'}}</th> -->
+                                                    <!-- <th>{{type | titlecase }}</th> -->
+                                                    <th>Brand
+                                                    </th>
+                                                    <th>
+                                                        Category</th>
+                                                    <th>
+                                                        Sub-Category</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let i of product  |filter:filterInput ;let index=index;">
+                                                    <td>
+                                                        <input type="checkbox" class="checkBoxClass" value="{{i.id}}"
+                                                            (change)="checkValue($event)" />
+                                                    </td>
+                                                    <!-- <td *ngIf="i.productCouponCodes[0]">{{i.productCouponCodes[0].Active}}</td>
+                                                    <td *ngIf="!i.productCouponCodes[0]">false</td> -->
+                                                    <td class="links" style="color: #D31D28 !important"
+                                                        (click)="getProductID(i.id)">{{i.productSKU}}
+                                                    </td>
+                                                    <td>{{i.variantName}}</td>
+                                                    <td style="text-align:right">{{i.variantPrice | number : '1.2-2'}}
+                                                    </td>
+                                                    <td style="text-align:right">
+                                                        {{i.variantSalePrice | number : '1.2-2'}}</td>
+                                                    <td>{{i.discount}}%</td>
+                                                    <td *ngIf="i.productCouponCodes[0]"><label class="switch"
+                                                            *ngIf="couponID == i.productCouponCodes[0].coupanCodeId">
+                                                            <input type="checkbox" name="activePercVarient{{index}}"
+                                                                [(ngModel)]="i.productCouponCodes[0].Active">
+                                                            <span class="slider round"></span>
+                                                        </label>
+                                                        <label class="switch"
+                                                            *ngIf="couponID != i.productCouponCodes[0].coupanCodeId">
+                                                            <input type="checkbox" name="activePercVarient{{index}}">
+                                                            <span class="slider round"></span>
+                                                        </label>
+                                                    </td>
+                                                    <td *ngIf="!i.productCouponCodes[0] ">
+                                                        <label class="switch">
+                                                            <input type="checkbox" name="activePercVarient{{index}}">
+                                                            <span class="slider round"></span>
+                                                        </label>
+                                                    </td>
+
+                                                    <!-- <td *ngIf="type.toLowerCase()!='flat'"><label class="switch">
+                                                            <input type="checkbox" name="activePercVarient{{index}}"
+                                                                [(ngModel)]="i.activePerc">
+                                                            <span class="slider round"></span>
+                                                        </label>
+                                                    </td> -->
+                                                    <td>{{i.brand.brand_name}}</td>
+                                                    <td *ngIf="i.category == null">Not Available</td>
+                                                    <td *ngIf="i.category != null">{{i.category.categoryName}}</td>
+                                                    <td *ngIf="i.subCategory == null">Not Available</td>
+                                                    <td *ngIf="i.subCategory != null">{{i.subCategory.subCategoryName}}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <button class="btn btn-secondary waves-effect crossred float-right ml-2"
+                                        type="submit" (click)="addCoupanCodeProductVariant()">Apply</button>
+                                    <button class="btn btn-secondary waves-effect crossred  float-right" type="submit"
+                                        (click)="deleteCoupon()">Remove</button>
+                                </div>
+                                <div class="col-6">
+                                    <!-- <div class="bs-example" style="text-align: right;">
+                                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- All products FLAT end -->
+
+    </div>
+</div>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-atom">
+    <p style="color: white">Please Wait It Will Take Sometime...</p>
+</ngx-spinner>

@@ -1,0 +1,78 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<!-- Begin page -->
+<div id="wrapper">
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                    <div class="col-sm-12">
+                        <div class="card-box">
+                            <h4 class="header-title mt-0 mb-3">Add Coupon Code</h4>
+                            <form [formGroup]="addFrom">
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label">Code Type*</label>
+                                        <select class="form-control" formControlName="codetypee" [(ngModel)]="codeTYpe2"
+                                            name="PopularBrandname" required>
+                                            <option value="FLAT">FLAT</option>
+                                            <option value="PERCENTAGE">PERCENTAGE</option>
+                                        </select>
+                                        <span class="alert"
+                                            *ngIf="!addFrom.get('codetypee').valid && addFrom.get('codetypee').touched">
+                                            Please Enter Code Type.
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label">Discount*</label>
+                                        <input type="text" class="form-control " [(ngModel)]="Discount3" name="Disc"
+                                            formControlName="disc" placeholder="Discount" required>
+                                        <span class="alert"
+                                            *ngIf="!addFrom.get('disc').valid && addFrom.get('disc').touched">
+                                            Please Enter Discount.
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label">Coupon Code*</label>
+                                        <input type="text" class="form-control text-uppercase" formControlName="coupan"
+                                            [(ngModel)]="CoupanCode1" name="Codes" placeholder="Coupan Code" required>
+                                        <span class="alert"
+                                            *ngIf="!addFrom.get('coupan').valid && addFrom.get('coupan').touched">
+                                            Please Enter Coupan Code.
+                                        </span>
+                                    </div>
+
+                                    <!-- <div class="form-group col-md-4 abc">
+                                        <label class="col-form-label">Coupon Code Message*</label>
+                                        <input type="text" class="form-control" [(ngModel)]="CCessgae2" name="Ccm"
+                                            formControlName="mess" placeholder="Message" required>
+                                        <span class="alert"
+                                            *ngIf="!addFrom.get('mess').valid && addFrom.get('mess').touched">
+                                            Please Enter Message.
+                                        </span>
+                                    </div>
+                                    <div class="form-group col-md-4 abc">
+                                        <label class="col-form-label">Active</label><br>
+                                        <label class="switch">
+                                            <input type="checkbox" [(ngModel)]="ActiveVariantToggle"
+                                                [ngModelOptions]="{standalone: true}" name="ActiveVariantSwitch">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div> -->
+
+                                </div>
+                                <button type="submit" [disabled]="!addFrom.valid"
+                                    class="btn btn-secondary waves-effect waves-light btn-block"
+                                    (click)="AddCoupan()">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Page -->
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-atom">
+    <p style="color: white">Adding</p>
+</ngx-spinner>

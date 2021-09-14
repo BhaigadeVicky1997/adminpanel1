@@ -1,0 +1,266 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<div id="wrapper">
+  <!-- Begin page -->
+  <div class="content-page">
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div><i class="fa fa-arrow-left pl-1" aria-hidden="true"><span class="pl-1"
+                  style="cursor: pointer;outline: none;" routerLink='/customers/view-customers'>Back to
+                  Customers</span></i>
+            </div>
+            <div class="card-box">
+              <span style="font-size: x-large;">Customer</span>
+              <div class="responsive-table-plugin">
+                <div class="table-rep-plugin">
+                  <div class="table-responsive" data-pattern="priority-columns">
+                    <table id="tech-companies-1" class="table table-bordered dt-responsive nowrap">
+                      <thead>
+                        <tr>
+                          <th>User ID</th>
+                          <th>Full Name</th>
+                          <th>Email ID</th>
+                          <th>Password</th>
+                          <th>Phone Number</th>
+                          <th>Created Date</th>
+                          <th>Updated Date</th>
+                          <th>Operation</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td routerLink='/customers/customer-summary' style="cursor: pointer;"><span>123334</span></td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                          <td>2011/04/25</td>
+                          <td>$320,800</td>
+                          <td>$320,800</td>
+                          <td>$320,800</td>
+                          <td><a style="cursor:pointer;color: #71B6F9;" data-toggle="modal" data-backdrop="static"
+                              data-keyboard="false" data-target="#kt_modal_1" class="fa fa-edit" aria-hidden="true"></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <div class="modal fade" id="kt_modal_1" role="dialog">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Update Customer</h4>
+                        <button type="button" class="close" data-dismiss="modal" id="dialogClose">&times;</button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="form-group col-md-4">
+                            <label class="col-form-label">User ID</label>
+                            <input type="text" class="form-control" id="UserID" placeholder="User ID" required>
+                            <p class="help-box">Please Enter User ID.
+                            </p>
+                          </div>
+                          <div class="form-group col-md-4">
+                            <label class="col-form-label">Full Name</label>
+                            <input type="number" class="form-control" id="FullName" placeholder="Full Name" required>
+                            <p class="help-box">Please Enter Full Name.</p>
+                          </div>
+                          <div class="form-group col-md-4 abc">
+                            <label class="col-form-label">Email ID</label>
+                            <input type="email" class="form-control" id="EmailID" placeholder="Email ID" required>
+                            <p class="help-box">Please Enter Email ID.</p>
+                          </div>
+                          <div class="form-group col-md-4 abc">
+                            <label class="col-form-label">Password
+                            </label>
+                            <input type="text" class="form-control" placeholder="Password" id="Password" required>
+                            <p class="help-box">Please Enter Password</p>
+                          </div>
+                          <div class="form-group col-md-4 abc">
+                            <label class="col-form-label">Phone Number
+                            </label>
+                            <input type="number" class="form-control" id="Phone Number" placeholder="Phone Number"
+                              required>
+                            <p class="help-box">Please Enter Phone Number.</p>
+                          </div>
+                          <div class="form-group col-md-4 abc">
+                            <label class="col-form-label">Active Products</label>
+                            <input type="text" class="form-control" id="Active Products" placeholder="Active Products"
+                              required>
+                            <p class="help-box">Please Enter Active Products.
+                            </p>
+                          </div>
+                          <div class="form-group col-md-4 abc">
+                            <label class="col-form-label">Created Date
+                            </label>
+                            <input type="text" class="form-control" id="CreatedDate" placeholder="Created Date"
+                              required>
+                            <p class="help-box">Please Enter Created Date.</p>
+                          </div>
+                          <div class="form-group col-md-4 abc">
+                            <label class="col-form-label">Updated Date</label>
+                            <input type="text" class="form-control" placeholder="UpdatedDate" id="Updated Date"
+                              required>
+                            <p class="help-box">Please Enter Updated Date.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer abc">
+                        <button type="button" class="btn btn-secondary waves-effect waves-light btn-block"
+                          data-dismiss="modal">Update</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Page -->
+    <!-- Begin Page -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card-box">
+              <span style="font-size: x-large;">User Address</span>
+              <div class="responsive-table-plugin">
+                <div class="table-rep-plugin">
+                  <div class="table-responsive" data-pattern="priority-columns">
+                    <table id="tech-companies-1" class="table table-bordered dt-responsive nowrap">
+                      <thead>
+                        <tr>
+                          <th>User ID</th>
+                          <th>Delivery Name</th>
+                          <th>Delivery Mobile Number</th>
+                          <th>Post Code</th>
+                          <th>House Number</th>
+                          <th>Street Address</th>
+                          <th>Area</th>
+                          <th>City</th>
+                          <th>State</th>
+                          <th>Country</th>
+                          <th>Created Date</th>
+                          <th>Modified Date</th>
+                          <th>Operations</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1234</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                          <td>2011/04/25</td>
+                          <td>$320,800</td>
+                          <td>$320,800</td>
+                          <td>$320,800</td>
+                          <td>$320,800</td>
+                          <td>$320,800</td>
+                          <td>$320,800</td>
+                          <td>$320,800</td>
+                          <td><a style="cursor:pointer;color: #71B6F9;" data-toggle="modal" data-backdrop="static"
+                              data-keyboard="false" data-target="#kt_modal_2" class="fa fa-edit" aria-hidden="true"></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <div class="modal fade" id="kt_modal_2" role="dialog">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Update User Addrerss</h4>
+                        <button type="button" class="close" data-dismiss="modal" id="dialogClose">&times;</button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="form-group col-md-4">
+                            <label class="col-form-label">User ID</label>
+                            <input type="text" class="form-control" id="" placeholder="User ID">
+                            <p class="help-box">Please Enter User ID.
+                            </p>
+                          </div>
+                          <div class="form-group col-md-4">
+                            <label class="col-form-label">Delivery Name</label>
+                            <input type="number" class="form-control" id="" placeholder="Delivery Name">
+                            <p class="help-box">Please Enter elivery Name.</p>
+                          </div>
+                          <div class="form-group col-md-4">
+                            <label class="col-form-label">Delivery Mobile Number</label>
+                            <input type="email" class="form-control" id="" placeholder="Delivery Mobile Number">
+                            <p class="help-box">Please Enter Delivery Mobile Number.</p>
+                          </div>
+                          <div class="form-group col-md-4">
+                            <label class="col-form-label">Post Code
+                            </label>
+                            <input type="text" class="form-control" placeholder="Post Code" id="">
+                            <p class="help-box">Please Enter Post Code.</p>
+                          </div>
+                          <div class="form-group col-md-4">
+                            <label class="col-form-label">House Number
+                            </label>
+                            <input type="text" class="form-control" id="" placeholder="House Number">
+                            <p class="help-box">Please Enter House Number.</p>
+                          </div>
+                          <div class="form-group col-md-4">
+                            <label class="col-form-label">Street Address</label>
+                            <input type="text" class="form-control" placeholder="Street Address" id="">
+                            <p class="help-box">Please Enter Street Address.</p>
+                          </div>
+                          <div class="form-group col-md-4">
+                            <label class="col-form-label">Area</label>
+                            <input type="text" class="form-control" placeholder="Area" id="">
+                            <p class="help-box">Please Enter Area.</p>
+                          </div>
+                          <div class="form-group col-md-4">
+                            <label class="col-form-label">City</label>
+                            <input type="text" class="form-control" placeholder="City" id="">
+                            <p class="help-box">Please Enter City.</p>
+                          </div>
+                          <div class="form-group col-md-4">
+                            <label class="col-form-label">State</label>
+                            <input type="text" class="form-control" placeholder="State" id="">
+                            <p class="help-box">Please Enter State.</p>
+                          </div>
+                          <div class="form-group col-md-4">
+                            <label class="col-form-label">Country</label>
+                            <input type="text" class="form-control" placeholder="Country" id="">
+                            <p class="help-box">Please Enter Country.</p>
+                          </div>
+                          <div class="form-group col-md-4">
+                            <label class="col-form-label">Created Date</label>
+                            <input type="text" class="form-control" placeholder="Created Date" id="">
+                            <p class="help-box">Please Enter Created Date.</p>
+                          </div>
+                          <div class="form-group col-md-4">
+                            <label class="col-form-label">Updated Date</label>
+                            <input type="text" class="form-control" placeholder="Updated Date" id="">
+                            <p class="help-box">Please Enter Updated Date.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer abc">
+                        <button type="button" class="btn btn-secondary waves-effect waves-light btn-block"
+                          data-dismiss="modal">Update</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End page -->
+  </div>
+</div>
